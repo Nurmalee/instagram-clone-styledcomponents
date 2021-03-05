@@ -89,7 +89,7 @@ const HeaderCenter = styled.div`
 `
 
 const HeaderRight = styled.div`
-    flex:0.75;
+    flex: 0.75;
     display: flex;
     align-items: center;
     justify-content: space-around;
