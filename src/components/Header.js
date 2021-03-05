@@ -56,6 +56,13 @@ const HeaderLeft = styled.div`
 
 const HeaderCenter = styled.div`
     display: none;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: #eee;
+    color: #bbb;
 
     > .MuiSvgIcon-root {
         height: 18px !important;
@@ -64,7 +71,7 @@ const HeaderCenter = styled.div`
 
     > input[type="text"] {
         background-color: inherit;
-        color: inherit;
+        color: black;
         border: none;
         outline: none;
         margin-left: 3px;
@@ -78,13 +85,6 @@ const HeaderCenter = styled.div`
 
     @media (min-width: 600px) {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid;
-        border-radius: 3px;
-        padding: 5px 3px;
-        background-color: #eee;
-        color: #ccc;
     }
 `
 
