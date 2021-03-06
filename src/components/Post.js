@@ -11,12 +11,12 @@ const Post = ({image, name, location}) => {
     return (
         <PostContainer>
             <PostHeader>
-                <PostHeaderImage>
+                {/* <PostHeaderImage>
                     <PostAvatarBg>
                         <PostAvatar src={image} />
                     </PostAvatarBg>
-                </PostHeaderImage>
-                {/* <PostAvatar src={image} /> */}
+                </PostHeaderImage> */}
+                <PostAvatar src={image} />
                 <PostHeaderTitle>
                     <h3>{name}</h3>
                     {location && <p>{location}</p>}
@@ -67,28 +67,28 @@ const PostHeader = styled.div`
     align-items: center;
 `
 
-const PostHeaderImage = styled.div`
-    margin-right: 10px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-`
+// const PostHeaderImage = styled.div`
+//     margin-right: 10px;
+//     text-align: center;
+//     display: flex;
+//     align-items: center;
+// `
 
-const PostAvatarBg = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* margin: 0 3px; */
-    place-items: center;
-    background: linear-gradient(to right, red, purple);
-    height: 44px;
-    width: 44px;
-    border-radius: 50%;
-`
+// const PostAvatarBg = styled.div`
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     place-items: center;
+//     background: linear-gradient(to right, red, purple);
+//     height: 44px;
+//     width: 44px;
+//     border-radius: 50%;
+// `
 
 const PostAvatar = styled(Avatar)`
-   border: 2px solid white;
-   cursor: pointer;
+    margin-right: 10px;
+    border: 2px solid white;
+    cursor: pointer;
 `
 
 const PostHeaderTitle = styled.div`
