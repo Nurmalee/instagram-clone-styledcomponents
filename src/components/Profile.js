@@ -21,7 +21,7 @@ const Profile = () => {
                     <SuggestedAvatar src="https://images.unsplash.com/photo-1585399000684-d2f72660f092?ixid=MXwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
                     <SuggestedDetails>
                         <h3> User Name </h3>
-                        <p> User Full Name </p>
+                        <p> Suggested For You </p>
                     </SuggestedDetails>
 
                     <button> Follow </button>
@@ -31,7 +31,7 @@ const Profile = () => {
                     <SuggestedAvatar src="https://images.unsplash.com/photo-1527203561188-dae1bc1a417f?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDgxfHRvd0paRnNrcEdnfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
                     <SuggestedDetails>
                         <h3> User Name </h3>
-                        <p> User Full Name </p>
+                        <p> Follows You </p>
                     </SuggestedDetails>
 
                     <button> Follow </button>
@@ -41,7 +41,7 @@ const Profile = () => {
                     <SuggestedAvatar src="https://images.unsplash.com/photo-1601511086638-a6d6946ed7fd?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDQ2fHRvd0paRnNrcEdnfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
                     <SuggestedDetails>
                         <h3> User Name </h3>
-                        <p> User Full Name </p>
+                        <p> Follows You </p>
                     </SuggestedDetails>
 
                     <button> Follow </button>
@@ -51,7 +51,7 @@ const Profile = () => {
                     <SuggestedAvatar src="https://images.unsplash.com/photo-1601511086638-a6d6946ed7fd?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDQ2fHRvd0paRnNrcEdnfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
                     <SuggestedDetails>
                         <h3> User Name </h3>
-                        <p> User Full Name </p>
+                        <p> Follows You </p>
                     </SuggestedDetails>
 
                     <button> Follow </button>
@@ -61,7 +61,7 @@ const Profile = () => {
                     <SuggestedAvatar src="https://images.unsplash.com/photo-1601511086638-a6d6946ed7fd?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDQ2fHRvd0paRnNrcEdnfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
                     <SuggestedDetails>
                         <h3> User Name </h3>
-                        <p> User Full Name </p>
+                        <p> Suggested For You </p>
                     </SuggestedDetails>
 
                     <button> Follow </button>
