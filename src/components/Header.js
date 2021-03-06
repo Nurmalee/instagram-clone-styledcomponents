@@ -40,7 +40,7 @@ const HeaderContainer = styled.section`
     width: 100%;
     z-index: 100;
     background-color: white;
-    border: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
 `
 
 const HeaderBar = styled.nav`

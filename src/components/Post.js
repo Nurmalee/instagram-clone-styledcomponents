@@ -10,7 +10,12 @@ const Post = ({image}) => {
     return (
         <PostContainer>
             <PostHeader>
-                <PostAvatar src={image} />
+                <PostHeaderImage>
+                    <PostAvatarBg>
+                        <PostAvatar src={image} />
+                    </PostAvatarBg>
+                </PostHeaderImage>
+                {/* <PostAvatar src={image} /> */}
                 <PostHeaderTitle>
                     <h3>Brianaamoore</h3>
                     <p>Zamunda, Angola</p>
@@ -21,18 +26,17 @@ const Post = ({image}) => {
                 <img src={image} alt="imagefile"/>
             </PostBody>
 
-            <PostBottom>
-                <PostBottomLeft>
+            <PostIcons>
+                <PostIconsLeft>
                     <HeartIcon />
                     <CommentIcon />
                     <PaperPlaneIcon />
-                </PostBottomLeft>
+                </PostIconsLeft>
 
-                <PostBottomRight>
+                <PostIconsRight>
                     <TagIcon />
-                </PostBottomRight>
-               
-            </PostBottom>
+                </PostIconsRight>
+            </PostIcons>
 
             
         </PostContainer>
@@ -47,6 +51,11 @@ const PostContainer = styled.div`
     border: 1px solid #ccc;
     margin: 30px auto;
     /* max-width: 900px; */
+
+    @media (max-width: 650px) {
+        background-color: transparent;
+        border: none;
+    }
 `
 
 const PostHeader = styled.div`
@@ -55,9 +64,27 @@ const PostHeader = styled.div`
     align-items: center;
 `
 
-const PostAvatar = styled(Avatar)`
+const PostHeaderImage = styled.div`
     margin-right: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+`
 
+const PostAvatarBg = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin: 0 3px; */
+    place-items: center;
+    background: linear-gradient(to right, red, purple);
+    height: 44px;
+    width: 44px;
+    border-radius: 50%;
+`
+
+const PostAvatar = styled(Avatar)`
+   border: 2px solid white;
 `
 
 const PostHeaderTitle = styled.div`
@@ -80,7 +107,7 @@ const PostBody = styled.div`
     }
 `
 
-const PostBottom = styled.div`
+const PostIcons = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -91,20 +118,20 @@ const PostBottom = styled.div`
 `
 
 const HeartIcon = styled(BsHeart)`
-     height: 23px;
-    width: 23px;
+     height: 27px;
+    width: 27px;
     cursor: pointer;
 `
 
 const CommentIcon = styled(GoComment)`
-    height: 23px;
-    width: 23px;
+    height: 27px;
+    width: 27px;
     cursor: pointer;
 `
 
 const PaperPlaneIcon = styled(RiSendPlaneLine)`
-    height: 23px;
-    width: 23px;
+    height: 27px;
+    width: 27px;
     cursor: pointer;
 `
 
@@ -114,14 +141,14 @@ const TagIcon = styled(GoTag)`
     cursor: pointer;
 `
 
-const PostBottomLeft = styled.div`
+const PostIconsLeft = styled.div`
     width: 100px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 `
 
-const PostBottomRight = styled.div`
+const PostIconsRight = styled.div`
     
   
 `
