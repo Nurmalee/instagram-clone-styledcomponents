@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Avatar } from '@material-ui/core';
+import { Avatar } from '@material-ui/core'
 import { storiesData } from '.././data/appUiData'
 
 const Stories = () => {
