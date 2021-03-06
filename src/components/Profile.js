@@ -81,7 +81,7 @@ const Profile = () => {
 export default Profile
 
 const ProfileContainer = styled.div`
-    padding: 20px;
+    padding: 20px 0 20px 20px;
     /* border: 1px solid #ccc; */
     position: sticky;
     left:0;
@@ -100,6 +100,7 @@ const UserProfile = styled.div`
         background-color: none;
         color: red;
         font-size: 12px;
+        text-align: right;
     }
 `
 
@@ -148,6 +149,7 @@ const SingleSuggestion = styled.div`
         background-color: none;
         color: red;
         font-size: 12px;
+        text-align: right;
     }
 `
 
