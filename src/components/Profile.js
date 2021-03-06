@@ -11,8 +11,7 @@ const Profile = () => {
 
 export default Profile
 
-const ProfileContainer = styled.section`
-/* margin-top: 40px; */
+const ProfileContainer = styled.div`
     height: 400px;
     border: 1px solid #ccc;
     position: sticky;

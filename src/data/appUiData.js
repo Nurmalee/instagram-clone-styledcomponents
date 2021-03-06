@@ -17,7 +17,7 @@ export const storiesData = [
         imageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTopMx7dcoqspKyWtme4twKvHViAQg9YBkj-g&usqp=CAU",
     },
     {
-        name: "Brianaamoore",
+        name: "Briana Amoore",
         imageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-lIsxlQmxODlpTRxUy2fJmi14FwcsJbhbCg&usqp=CAU",
     },
     {

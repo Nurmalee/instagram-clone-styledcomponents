@@ -6,13 +6,11 @@ import { GoComment, GoTag } from 'react-icons/go';
 import { RiSendPlaneLine } from 'react-icons/ri';
 
 
-
-
-const Post = () => {
+const Post = ({image}) => {
     return (
         <PostContainer>
             <PostHeader>
-                <PostAvatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-lIsxlQmxODlpTRxUy2fJmi14FwcsJbhbCg&usqp=CAU" />
+                <PostAvatar src={image} />
                 <PostHeaderTitle>
                     <h3>Brianaamoore</h3>
                     <p>Zamunda, Angola</p>
@@ -20,7 +18,7 @@ const Post = () => {
             </PostHeader>
 
             <PostBody>
-                <img src="https://images.unsplash.com/photo-1614958708511-3fa50b0bdd8f?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMnx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60" alt="imagefile"/>
+                <img src={image} alt="imagefile"/>
             </PostBody>
 
             <PostBottom>

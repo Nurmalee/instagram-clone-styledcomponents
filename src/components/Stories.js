@@ -30,8 +30,9 @@ const StoriesContainer = styled.section`
     padding: 15px 10px;
     background-color: white;
     max-width: 900px;
-    margin: 2px auto;
+    margin: 8px auto 0 auto;
     display: flex;
+    justify-content: space-around;
     overflow-x: scroll;
 
     @media (min-width: 650px) {
