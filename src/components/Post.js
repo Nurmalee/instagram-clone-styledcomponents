@@ -6,7 +6,7 @@ import { GoComment, GoTag } from 'react-icons/go';
 import { RiSendPlaneLine } from 'react-icons/ri';
 
 
-const Post = ({image}) => {
+const Post = ({image, name, location}) => {
     return (
         <PostContainer>
             <PostHeader>
@@ -17,8 +17,8 @@ const Post = ({image}) => {
                 </PostHeaderImage>
                 {/* <PostAvatar src={image} /> */}
                 <PostHeaderTitle>
-                    <h3>Brianaamoore</h3>
-                    <p>Zamunda, Angola</p>
+                    <h3>{name}</h3>
+                    {location && <p>{location}</p>}
                 </PostHeaderTitle>
             </PostHeader>
 

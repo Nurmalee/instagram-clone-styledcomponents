@@ -9,11 +9,17 @@ const AppBody = () => {
         <AppBodyContainer>
             <MainBody>
                 <Stories />
-                <Post image="https://images.unsplash.com/photo-1585399000684-d2f72660f092?ixid=MXwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+                <Post name="WHoever Sends" location="Sender's Location" image="https://images.unsplash.com/photo-1585399000684-d2f72660f092?ixid=MXwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
 
-                <Post image="https://images.unsplash.com/photo-1551240370-1da11d874ed9?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDd8X2hiLWRsNFEtNFV8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+                <Post name="WHoever Sends" location="Sender's Location" image="https://images.unsplash.com/photo-1551240370-1da11d874ed9?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDd8X2hiLWRsNFEtNFV8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
 
-                <Post image="https://images.unsplash.com/photo-1614970800312-cf7417e37086?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3OXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+                <Post name="WHoever Sends" location="Sender's Location" image="https://images.unsplash.com/photo-1614970800312-cf7417e37086?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3OXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+
+                <Post name="WHoever Sends" location="Sender's Location" image="https://images.unsplash.com/photo-1601511086638-a6d6946ed7fd?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDQ2fHRvd0paRnNrcEdnfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+
+                <Post name="WHoever Sends" location="Sender's Location" image="https://images.unsplash.com/photo-1572177218317-9e83f9a87971?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDIwfHJuU0tESHd3WVVrfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+
+                <Post name="WHoever Sends" location="Sender's Location" image="https://images.unsplash.com/photo-1527203561188-dae1bc1a417f?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDgxfHRvd0paRnNrcEdnfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
 
             </MainBody>
 
@@ -49,7 +55,7 @@ const MainBody = styled.section`
 
 const ProfileContainer = styled.section`
     flex: 0.35;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     position: relative;
 
     @media (max-width: 900px) {
