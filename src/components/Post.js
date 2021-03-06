@@ -85,11 +85,17 @@ const PostAvatarBg = styled.div`
 
 const PostAvatar = styled(Avatar)`
    border: 2px solid white;
+   cursor: pointer;
 `
 
 const PostHeaderTitle = styled.div`
     > h3 {
         font-size: 14px;
+        cursor: pointer;
+    }
+
+    > h3:hover {
+        text-decoration: underline;
     }
 
     > p {
@@ -152,5 +158,3 @@ const PostIconsRight = styled.div`
     
   
 `
-
-

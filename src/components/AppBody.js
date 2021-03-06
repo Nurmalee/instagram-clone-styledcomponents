@@ -21,6 +21,8 @@ const AppBody = () => {
 
                 <Post name="WHoever Sends" location="Sender's Location" image="https://images.unsplash.com/photo-1527203561188-dae1bc1a417f?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDgxfHRvd0paRnNrcEdnfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
 
+                <Post name="WHoever Sends" location="Sender's Location" image="https://avatars.githubusercontent.com/u/70635657?s=460&u=eea4bb2b6dff02e5993458cecc93018eca3bd17d&v=4" />
+
             </MainBody>
 
             <ProfileContainer>

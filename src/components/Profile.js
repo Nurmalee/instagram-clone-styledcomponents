@@ -71,7 +71,7 @@ const Profile = () => {
 
             <Tabs>
                 <p>About . Help . Press . API . Jobs . Privacy . Terms . Locations . Top Accounts . Hashtags . Language</p>
-                <p> &copy; 2021 INSTAGRAM FROM ThELEEEFFECT </p>
+                <p> &copy; 2021 INSTAGRAM FROM <span>THELEEEFFECT</span> </p>
             </Tabs>
             
         </ProfileContainer>
@@ -81,7 +81,7 @@ const Profile = () => {
 export default Profile
 
 const ProfileContainer = styled.div`
-    padding: 20px 0 20px 20px;
+    padding: 20px 5px 20px 20px;
     /* border: 1px solid #ccc; */
     position: sticky;
     left:0;
@@ -108,7 +108,7 @@ const UserAvatar = styled(Avatar)`
     background-color: white;
     height: 60px !important;
     width: 60px !important;
-
+    cursor: pointer;
 `
 
 const UserDetails = styled.div`
@@ -118,6 +118,11 @@ const UserDetails = styled.div`
     > h3 {
         font-size: 13px;
         color: #555;
+        cursor: pointer;
+    }
+
+    > h3:hover {
+        text-decoration: underline ;
     }
 
     > p {
@@ -156,6 +161,7 @@ const SingleSuggestion = styled.div`
 const SuggestedAvatar = styled(Avatar)`
     height: 35px !important;
     width: 35px !important;
+    cursor: pointer;
 `
 
 const SuggestedDetails = styled.div`
@@ -165,6 +171,11 @@ const SuggestedDetails = styled.div`
     > h3 {
         font-size: 13px;
         color: #555;
+        cursor: pointer;
+    }
+
+    > h3:hover {
+        text-decoration: underline ;
     }
 
     > p {
@@ -181,5 +192,12 @@ const Tabs = styled.div`
 
     > p:last-of-type {
         margin-top: 20px
+    }
+
+    > p:last-of-type > span {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        letter-spacing: 2px;
+        color: #777;
+        padding: 0 10px;
     }
 `

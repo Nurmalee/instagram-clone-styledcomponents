@@ -57,6 +57,7 @@ const HeaderLeft = styled.div`
     > img {
         height: 45px;
         object-fit: contain;
+        cursor: pointer;
     }
 `
 
@@ -73,6 +74,7 @@ const HeaderCenter = styled.div`
     > .MuiSvgIcon-root {
         height: 15px !important;
         width: 15px !important;
+        cursor: pointer;
    }
 
     > input[type="text"] {
@@ -102,12 +104,6 @@ const HeaderRight = styled.div`
     align-items: center;
     justify-content: space-around;
 
-    > .MuiSvgIcon-root {
-        cursor: pointer;
-        height: 28px !important;
-        width: 28px !important;
-    }
-
     @media screen and (min-width:700px){
         flex: 0.4;
     }
@@ -123,19 +119,23 @@ const HeaderAvatar = styled(Avatar)`
 const HomeIcon = styled(RiHome5Fill)`
     height: 25px;
     width: 25px;
+    cursor: pointer;
 `
 
 const MessengerIcon = styled(RiMessengerLine)`
     height: 25px;
     width: 25px;
+    cursor: pointer;
 `
 
 const CompassIcon = styled(BsCompass)`
     height: 23px;
     width: 23px;
+    cursor: pointer;
 `
 
 const HeartIcon = styled(BsHeart)`
     height: 23px;
     width: 23px;
+    cursor: pointer;
 `
