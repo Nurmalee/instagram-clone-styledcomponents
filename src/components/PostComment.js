@@ -7,6 +7,7 @@ import { VscSmiley } from 'react-icons/vsc';
 const PostComment = () => {
     return (
         <PostCommentContainer>
+            <p>View all xxx comments</p>
             <SingleComment>
                 <h3> Commentator_1 <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. </span> </h3>
             </SingleComment>
@@ -27,6 +28,14 @@ const PostComment = () => {
 export default PostComment
 
 const PostCommentContainer = styled.div`
+
+    > p {
+        padding: 3px 15px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #777;
+    }
+
     > form {
         width: 100%;
         margin-top: 10px;
@@ -62,12 +71,12 @@ const SingleComment = styled.div`
     padding: 3px 15px;
 
     >h3 {
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 500;
     }
 
     >h3 > span {
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 100;
         color: grey;
     }

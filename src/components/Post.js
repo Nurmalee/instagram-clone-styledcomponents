@@ -41,6 +41,8 @@ const Post = ({image, name, location}) => {
                 </PostIconsRight>
             </PostIcons>
 
+            <p> Name of Poster <span>What they posted, Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate quisquam aperiam officia id hic excepturi quam, deserunt maxime rerum illum. ...........</span> </p>
+
             <PostComment />
         </PostContainer>
     )
@@ -54,6 +56,18 @@ const PostContainer = styled.div`
     border: 1px solid #ccc;
     margin: 30px auto;
     /* max-width: 900px; */
+
+    > p {
+        font-size: 13px;
+        font-weight: 500;
+        padding: 3px 15px;
+    }
+
+    > p  > span {
+        font-size: 11px;
+        font-weight: 100;
+        color: grey;
+    }
 
     @media (max-width: 650px) {
         background-color: transparent;
@@ -127,7 +141,7 @@ const PostIcons = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
+    padding: 10px 15px;
     > h3, p {
         font-size: 14px;
     }
