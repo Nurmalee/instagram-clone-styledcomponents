@@ -20,7 +20,7 @@ const Post = () => {
             </PostHeader>
 
             <PostBody>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTXLgqf6Q4-CyL5YIZ2xuECaGZjwdu_nrZDA&usqp=CAU" alt="imagefile"/>
+                <img src="https://images.unsplash.com/photo-1614958708511-3fa50b0bdd8f?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMnx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60" alt="imagefile"/>
             </PostBody>
 
             <PostBottom>
@@ -46,9 +46,9 @@ export default Post
 
 const PostContainer = styled.div`
     background-color: white;
-    border: 1px solid;
-    margin: 20px auto;
-    max-width: 900px;
+    border: 1px solid #ccc;
+    margin: 30px auto;
+    /* max-width: 900px; */
 `
 
 const PostHeader = styled.div`
@@ -63,7 +63,7 @@ const PostAvatar = styled(Avatar)`
 `
 
 const PostHeaderTitle = styled.div`
-    > h3, p {
+    > h3 {
         font-size: 14px;
     }
 
@@ -73,7 +73,6 @@ const PostHeaderTitle = styled.div`
 `
 
 const PostBody = styled.div`
-    border: 1px solid;
     width: 100%;
 
     > img {
@@ -94,30 +93,34 @@ const PostBottom = styled.div`
 `
 
 const HeartIcon = styled(BsHeart)`
-    height: 23px;
+     height: 23px;
     width: 23px;
-    margin-right: 7px;
-`
-
-const TagIcon = styled(GoTag)`
-    height: 23px;
-    width: 23px;
+    cursor: pointer;
 `
 
 const CommentIcon = styled(GoComment)`
     height: 23px;
     width: 23px;
-    margin-right: 5px;
+    cursor: pointer;
 `
 
 const PaperPlaneIcon = styled(RiSendPlaneLine)`
     height: 23px;
     width: 23px;
+    cursor: pointer;
+`
+
+const TagIcon = styled(GoTag)`
+    height: 27px;
+    width: 27px;
+    cursor: pointer;
 `
 
 const PostBottomLeft = styled.div`
-    
-   
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 `
 
 const PostBottomRight = styled.div`

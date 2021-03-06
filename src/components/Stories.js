@@ -27,17 +27,15 @@ export default Stories
 
 const StoriesContainer = styled.section`
     border: 1px solid #ccc;
-    padding: 20px 10px;
+    padding: 15px 10px;
     background-color: white;
     max-width: 900px;
     margin: 2px auto;
     display: flex;
-    /* justify-content: space-around; */
-    /* align-items: center; */
     overflow-x: scroll;
 
-    @media (min-width: 700px) {
-        margin-top: 30px;
+    @media (min-width: 650px) {
+        margin-top: 40px;
     }
 
     /* scrollbar */
@@ -75,7 +73,7 @@ const AvatarBg = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 3px;
+    /* margin: 0 3px; */
     place-items: center;
     background: linear-gradient(to right, red, purple);
     border-radius: 50%;

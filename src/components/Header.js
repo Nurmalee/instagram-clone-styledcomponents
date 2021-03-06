@@ -33,13 +33,19 @@ const Header = () => {
 export default Header;
 
 const HeaderContainer = styled.section`
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 100;
     background-color: white;
     border: 1px solid #ccc;
 `
 
 const HeaderBar = styled.nav`
     background-color: white;
-    max-width: 950px;
+    max-width: 970px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -60,23 +66,25 @@ const HeaderCenter = styled.div`
     justify-content: center;
     border: 1px solid;
     border-radius: 3px;
-    padding: 5px;
-    background-color: #eee;
+    padding: 4px 15px;
+    background-color: whitesmoke;
     color: #bbb;
 
     > .MuiSvgIcon-root {
-        height: 18px !important;
-        width: 18px !important;
+        height: 15px !important;
+        width: 15px !important;
    }
 
     > input[type="text"] {
         background-color: inherit;
         color: black;
         border: none;
+        font-weight: 100;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         outline: none;
         margin-left: 3px;
-        flex: 0.5;
-        width: 50%;
+        flex: 0.3;
+        width: 30%;
         :focus {
             flex: 1;
             width: 100%;
