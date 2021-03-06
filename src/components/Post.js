@@ -4,6 +4,7 @@ import { Avatar } from '@material-ui/core'
 import { BsHeart, BsThreeDots } from 'react-icons/bs';
 import { GoComment, GoTag } from 'react-icons/go';
 import { RiSendPlaneLine } from 'react-icons/ri';
+import PostComment from './PostComment';
 
 
 const Post = ({image, name, location}) => {
@@ -40,7 +41,7 @@ const Post = ({image, name, location}) => {
                 </PostIconsRight>
             </PostIcons>
 
-            
+            <PostComment />
         </PostContainer>
     )
 }
@@ -133,7 +134,7 @@ const PostIcons = styled.div`
 `
 
 const HeartIcon = styled(BsHeart)`
-     height: 27px;
+    height: 27px;
     width: 27px;
     cursor: pointer;
 `
