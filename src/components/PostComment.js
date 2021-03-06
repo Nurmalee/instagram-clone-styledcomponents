@@ -8,11 +8,11 @@ const PostComment = () => {
     return (
         <PostCommentContainer>
             <SingleComment>
-                <h3> Commentator <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate possimus ducimus laboriosam placeat enim delectus commodi, quibusdam mollitia est nemo. </span> </h3>
+                <h3> Commentator_1 <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. </span> </h3>
             </SingleComment>
 
             <SingleComment>
-                <h3> Commentator <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate possimus ducimus laboriosam placeat enim delectus commodi, quibusdam mollitia est nemo. </span> </h3>
+                <h3> Commentator_2 <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. </span> </h3>
             </SingleComment>
 
             <form>
@@ -34,6 +34,10 @@ const PostCommentContainer = styled.div`
         display: flex;
         align-items: center;
         border-top: 1px solid #ccc;
+
+        @media (max-width: 650px) {
+            display: none;
+        }
     }
 
     > form > input {
