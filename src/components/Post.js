@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Avatar } from '@material-ui/core'
-import { BsHeart } from 'react-icons/bs';
+import { BsHeart, BsThreeDots } from 'react-icons/bs';
 import { GoComment, GoTag } from 'react-icons/go';
 import { RiSendPlaneLine } from 'react-icons/ri';
 
@@ -20,6 +20,8 @@ const Post = ({image, name, location}) => {
                     <h3>{name}</h3>
                     {location && <p>{location}</p>}
                 </PostHeaderTitle>
+
+                <ThreeDotsMoreInfoIcon />
             </PostHeader>
 
             <PostBody>
@@ -89,6 +91,7 @@ const PostAvatar = styled(Avatar)`
 `
 
 const PostHeaderTitle = styled.div`
+    flex: 1;
     > h3 {
         font-size: 14px;
         cursor: pointer;
@@ -101,6 +104,12 @@ const PostHeaderTitle = styled.div`
     > p {
         font-size: 12px;
     }
+`
+
+const ThreeDotsMoreInfoIcon = styled(BsThreeDots)`
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
 `
 
 const PostBody = styled.div`
@@ -155,6 +164,4 @@ const PostIconsLeft = styled.div`
 `
 
 const PostIconsRight = styled.div`
-    
-  
 `
