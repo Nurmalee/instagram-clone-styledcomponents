@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Post from './Post'
 import Stories from './Stories';
 import styled from 'styled-components'
 import Profile from './Profile';
+import PostInput from './PostInput'
 
 import { BsPlusCircle } from 'react-icons/bs';
 
 const AppBody = () => {
+
+    const [showPostInput, setShowPostInput] = useState(false);
+
     return (
         <AppBodyContainer>
             <MainBody>
@@ -28,7 +32,7 @@ const AppBody = () => {
 
             </MainBody>
 
-            <AddPostButton>
+            <AddPostButton onClick={() => setShowPostInput(!showPostInput)}>
                 <p>create a post</p>
                 <PlusIcon />
             </AddPostButton>
@@ -36,6 +40,8 @@ const AppBody = () => {
             <ProfileContainer>
                 <Profile />
             </ProfileContainer>
+
+            <PostInput showPostInput={showPostInput} setShowPostInput={setShowPostInput} />
                
         </AppBodyContainer>
     )
@@ -85,6 +91,7 @@ const AddPostButton = styled.div`
     border-radius: 50px;
     transition: 1000ms;
     box-shadow: 0 0 10px black;
+    z-index: 100;
 
     > p {
         text-transform: capitalize;

@@ -27,9 +27,8 @@ export default Stories
 
 const StoriesContainer = styled.section`
     border: 1px solid #ccc;
-    padding: 15px 10px;
+    padding: 20px 10px;
     background-color: white;
-    max-width: 900px;
     margin: 8px auto 0 auto;
     display: flex;
     justify-content: space-around;
@@ -59,12 +58,11 @@ const StoriesContainer = styled.section`
 
 const StoryContainer = styled.div`
     flex: 1;
-    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+
     > p {
-        text-align: center;
         font-size: 11px;
         margin-top: 3px;
     }
@@ -74,8 +72,6 @@ const AvatarBg = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    /* margin: 0 3px; */
-    place-items: center;
     background: linear-gradient(to right, red, purple);
     border-radius: 50%;
     min-height: 64px;

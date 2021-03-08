@@ -24,8 +24,8 @@ export const storiesData = [
         name: "Marques Brownlee",
          imageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7wxzgd28yMN8y6RQXm4axmp4QIiuTpr2O9A&usqp=CAU",
     },
-    {
-        name: "Israel Adesanya",
-        imageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjYqVOz_VI8N7z0EIoCE--obgFS9rhee3rjw&usqp=CAU",
-    },
+    // {
+    //     name: "Israel Adesanya",
+    //     imageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjYqVOz_VI8N7z0EIoCE--obgFS9rhee3rjw&usqp=CAU",
+    // },
 ]
