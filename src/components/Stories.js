@@ -14,7 +14,7 @@ const Stories = () => {
                             <AvatarBg>
                                 <StoriesAvatar src={imageSrc} />
                             </AvatarBg>
-                            <p> {name} </p>
+                            {name.length <= 10 ? <p> {name} </p> : <p> {name.slice(0,10)}... </p>}
                         </StoryContainer>
                     )
                 })
