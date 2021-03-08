@@ -84,13 +84,13 @@ const AddPostButton = styled.div`
     background-color: white;
     border-radius: 50px;
     transition: 1000ms;
-    border: 2px solid;
+    box-shadow: 0 0 10px black;
 
     > p {
         text-transform: capitalize;
         font-size: 14px;
         font-weight: 500;
-        padding: 0 10px;
+        padding: 0 10px 0 15px;
         transition: 3000ms;
         display: none;
     }
@@ -110,8 +110,9 @@ const PlusIcon = styled(BsPlusCircle)`
     padding: 3px;
     box-shadow: 0 0 10px black;
     transition: 2000ms;
+    position: relative;
 
     :hover {
-        transform: rotate(720deg)
+        transform: rotate(90deg)
     }
 `
