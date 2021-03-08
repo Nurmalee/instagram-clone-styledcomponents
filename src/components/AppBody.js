@@ -4,11 +4,14 @@ import Stories from './Stories';
 import styled from 'styled-components'
 import Profile from './Profile';
 
+import { BsPlusCircle } from 'react-icons/bs';
+
 const AppBody = () => {
     return (
         <AppBodyContainer>
             <MainBody>
                 <Stories />
+
                 <Post name="WHoever Sends" location="Sender's Location" image="https://images.unsplash.com/photo-1585399000684-d2f72660f092?ixid=MXwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
 
                 <Post name="WHoever Sends" location="Sender's Location" image="https://images.unsplash.com/photo-1551240370-1da11d874ed9?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDd8X2hiLWRsNFEtNFV8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
@@ -24,6 +27,10 @@ const AppBody = () => {
                 <Post name="WHoever Sends" location="Sender's Location" image="https://avatars.githubusercontent.com/u/70635657?s=460&u=eea4bb2b6dff02e5993458cecc93018eca3bd17d&v=4" />
 
             </MainBody>
+
+            <AddPostButton>
+                <PlusIcon />
+            </AddPostButton>
 
             <ProfileContainer>
                 <Profile />
@@ -64,5 +71,30 @@ const ProfileContainer = styled.section`
         display: none;
     }
 `
+const AddPostButton = styled.div`
+    height: max-content;
+    width: max-content;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+`
 
+const PlusIcon = styled(BsPlusCircle)`
+    color: #333;
+    background-color: white;
+    box-sizing: border-box;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    padding: 3px;
+    box-shadow: 0 0 10px black;
+    transition: 1000ms;
 
+    :hover {
+        transform: rotate(720deg)
+    }
+`
