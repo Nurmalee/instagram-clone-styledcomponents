@@ -7,10 +7,10 @@ const Stories = () => {
     return (
         <StoriesContainer>
             {
-                storiesData.map(story => {
+                storiesData.map((story, index) => {
                     const {name, imageSrc} = story;
                     return (
-                        <StoryContainer>
+                        <StoryContainer key={index}>
                             <AvatarBg>
                                 <StoriesAvatar src={imageSrc} />
                             </AvatarBg>

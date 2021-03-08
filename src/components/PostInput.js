@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
-import { BsCloudUpload } from 'react-icons/bs';
+import { MdCloudUpload } from 'react-icons/md';
 import { RiSendPlaneLine } from 'react-icons/ri';
 
 
 const PostInput = ({showPostInput, setShowPostInput}) => {
+
+    const [textInput, setTextInput] = useState("")
 
     const handlePostSubmit = (e) => {
         e.preventDefault()
@@ -17,17 +19,18 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
             <Backdrop>
             <PostFormContainer>
                 <form onSubmit={handlePostSubmit}>
-                    <textarea type="text" rows='15' placeholder="Say something about this post or just upload a picture" />
+                    <textarea rows="10" placeholder="Say something about this post or just upload a picture..." value={textInput} onChange={(e) => setTextInput(e.target.value)} />
+
                     <div>
-                        <button> <BsCloudUpload style={{height: "20px", width: "20px", marginRight: "10px"}}/> upload image</button>
-                        <button type="submit" > <RiSendPlaneLine  style={{height: "20px", width: "20px", marginRight: "10px"}} /> send post</button>
+                        <button> <MdCloudUpload style={{height: "20px", width: "20px", marginRight: "10px"}}/> upload image </button>
+                        <button type="submit" > <RiSendPlaneLine  style={{height: "20px", width: "20px", marginRight: "10px"}} /> send post </button>
                     </div>
                 </form>
             </PostFormContainer>
             </Backdrop>
         )
     }
-    return null;
+     return null;
 }
 
 export default PostInput
