@@ -29,6 +29,7 @@ const AppBody = () => {
             </MainBody>
 
             <AddPostButton>
+                <p>create a post</p>
                 <PlusIcon />
             </AddPostButton>
 
@@ -78,9 +79,25 @@ const AddPostButton = styled.div`
     bottom: 20px;
     right: 20px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     cursor: pointer;
+    background-color: white;
+    border-radius: 50px;
+    transition: 1000ms;
+    border: 2px solid;
+
+    > p {
+        text-transform: capitalize;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 0 10px;
+        transition: 3000ms;
+        display: none;
+    }
+
+    :hover > p {
+        display: block;
+    }
 `
 
 const PlusIcon = styled(BsPlusCircle)`
@@ -92,7 +109,7 @@ const PlusIcon = styled(BsPlusCircle)`
     border-radius: 50%;
     padding: 3px;
     box-shadow: 0 0 10px black;
-    transition: 1000ms;
+    transition: 2000ms;
 
     :hover {
         transform: rotate(720deg)
