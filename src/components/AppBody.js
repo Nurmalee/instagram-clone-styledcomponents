@@ -116,10 +116,10 @@ const PlusIcon = styled(BsPlusCircle)`
     border-radius: 50%;
     padding: 3px;
     box-shadow: 0 0 10px black;
-    transition: 2000ms;
+    transition: 1000ms;
     position: relative;
 
     :hover {
-        transform: rotate(90deg)
+        transform: rotate(1080deg)
     }
 `

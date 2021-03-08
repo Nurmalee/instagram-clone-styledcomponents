@@ -9,6 +9,7 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
 
     const [textInput, setTextInput] = useState("")
     const [imageFile, setImageFile] = useState(null)
+    const imageType = ["image/png", "image/jpg", "image/jpeg", "image/JPG", "image/JPEG", "image/PNG"]
 
     const handlePostSubmit = (e) => {
         e.preventDefault()
@@ -26,8 +27,12 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
     }
 
     const attachImageFile = (e) => {
-        if(imageFile){
-            setImageFile(e.target.files[0])
+        let selectedImageFile = e.target.files[0];
+        if(selectedImageFile && imageType.includes(selectedImageFile.type)){
+            setImageFile(selectedImageFile)
+            console.log(selectedImageFile)
+        } else {
+            return ;
         }
     }
 
@@ -36,7 +41,7 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
             <Backdrop>
             <PostFormContainer>
                 <form onSubmit={handlePostSubmit}>
-                    <textarea rows="10" placeholder="Say something about this post or just upload a picture..." value={textInput} onChange={(e) => setTextInput(e.target.value)} />
+                    <textarea rows={10} placeholder="Say something about this post or just upload a picture..." value={textInput} onChange={(e) => setTextInput(e.target.value)} />
 
                     <div>
                         <label htmlFor='file'>
