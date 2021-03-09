@@ -6,7 +6,7 @@ import { instagramCloneDb, firebaseServerTime } from '.././config/firebaseConfig
 const PostComment = ({postId}) => {
     const [commentText, setCommentText] = useState("")
     const [comments, setComments] = useState([])
-    // const [shownComments, setShownComments] = useState([])
+    const [showLessComments, setShowLessComments] = useState(true)
 
     useEffect(() => {
         instagramCloneDb.collection("posts")
@@ -19,13 +19,6 @@ const PostComment = ({postId}) => {
         })
     }, [postId])
 
-    // useEffect(() => {
-    //     if(comments.length > 5){
-    //         let slicedComments = comments.slice(0, 5);
-    //         setComments(slicedComments)
-    //     }
-    // }, [comments.length, comments])
-
     const handleCommentInput = (e) => {
         e.preventDefault()
 
@@ -34,7 +27,7 @@ const PostComment = ({postId}) => {
             .doc(postId)
             .collection("comments")
             .add({
-                commentator: "The Lee Best",
+                commentator: "DavidoOfficial",
                 text: commentText,
                 createdAt: firebaseServerTime
             })
@@ -46,11 +39,11 @@ const PostComment = ({postId}) => {
 
     return (
         <PostCommentContainer>
-            {comments.length > 5 && <p>View all {comments.length} comments </p> }
+            {comments.length > 0 && <p onClick={() => setShowLessComments(!showLessComments) }> {showLessComments ? `View all ${comments.length} ${comments.length <= 1 ? "comment" : "comments"}` : "Show less comments" } </p>}
 
             {
-                comments.length > 5 ?
-                comments.slice(0, 5).map(comment => {
+                showLessComments ?
+                comments.slice(0, 3).map(comment => {
                     const {commentator, text} = comment.data
                     return (
                         <SingleComment key={comment.id}>
