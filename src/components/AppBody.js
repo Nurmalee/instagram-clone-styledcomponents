@@ -28,14 +28,14 @@ const AppBody = () => {
                     posts.map(post => {
                         const {name, userPicture, uploadedImage, text, createdAt} = post.data
                         return (
-                            <Post name={name} text={text} userPicture={userPicture} createdAt={createdAt} uploadedImage={uploadedImage} />
+                            <Post key={post.id} postId={post.id} name={name} text={text} userPicture={userPicture} createdAt={createdAt} uploadedImage={uploadedImage} />
                         )
                     })
                 }
 
-                <Post name="Nurmalee" text="What an exquisite design!!!" uploadedImage="https://images.unsplash.com/photo-1585399000684-d2f72660f092?ixid=MXwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+                {/* <Post name="Nurmalee" text="What an exquisite design!!!" uploadedImage="https://images.unsplash.com/photo-1585399000684-d2f72660f092?ixid=MXwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
 
-                <Post name="Cristiano" text="Fruit is life!!!, I eat this fruits to stay fit and recover after every football game" uploadedImage="https://images.unsplash.com/photo-1551240370-1da11d874ed9?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDd8X2hiLWRsNFEtNFV8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+                <Post name="Cristiano" text="Fruit is life!!!, I eat this fruits to stay fit and recover after every football game" uploadedImage="https://images.unsplash.com/photo-1551240370-1da11d874ed9?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDd8X2hiLWRsNFEtNFV8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" /> */}
 
                 {/* <Post name="WHoever Sends" location="Sender's Location" image="https://images.unsplash.com/photo-1614970800312-cf7417e37086?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3OXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
 

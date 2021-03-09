@@ -1,24 +1,76 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { VscSmiley } from 'react-icons/vsc';
+import { instagramCloneDb, firebaseServerTime } from '.././config/firebaseConfig'
+
+const PostComment = ({postId}) => {
+    const [commentText, setCommentText] = useState("")
+    const [comments, setComments] = useState([])
+    // const [shownComments, setShownComments] = useState([])
+
+    useEffect(() => {
+        instagramCloneDb.collection("posts")
+        .doc(postId)
+        .collection("comments")
+        .orderBy("createdAt", "desc")
+        .onSnapshot(snap => {
+            setComments(snap.docs
+                .map(doc => ({id: doc.id, data: doc.data()})))
+        })
+    }, [postId])
+
+    // useEffect(() => {
+    //     if(comments.length > 5){
+    //         let slicedComments = comments.slice(0, 5);
+    //         setComments(slicedComments)
+    //     }
+    // }, [comments.length, comments])
+
+    const handleCommentInput = (e) => {
+        e.preventDefault()
+
+        if(postId && commentText){
+            instagramCloneDb.collection("posts")
+            .doc(postId)
+            .collection("comments")
+            .add({
+                commentator: "The Lee Best",
+                text: commentText,
+                createdAt: firebaseServerTime
+            })
+            setCommentText("")
+        }
+
+    }
 
 
-
-const PostComment = () => {
     return (
         <PostCommentContainer>
-            <p>View all xxx comments</p>
-            <SingleComment>
-                <h3> Commentator_1 <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. </span> </h3>
-            </SingleComment>
+            {comments.length > 5 && <p>View all {comments.length} comments </p> }
 
-            <SingleComment>
-                <h3> Commentator_2 <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. </span> </h3>
-            </SingleComment>
+            {
+                comments.length > 5 ?
+                comments.slice(0, 5).map(comment => {
+                    const {commentator, text} = comment.data
+                    return (
+                        <SingleComment key={comment.id}>
+                            <h3> {commentator} <span> {text} </span> </h3>
+                        </SingleComment>
+                    )
+                }) : 
+                comments.map(comment => {
+                    const {commentator, text} = comment.data
+                    return (
+                        <SingleComment key={comment.id}>
+                            <h3> {commentator} <span> {text} </span> </h3>
+                        </SingleComment>
+                    )
+                })
+            }
 
-            <form>
+            <form onSubmit={handleCommentInput} >
                 <CommentInputSmileyIcon />
-                <input type="text" placeholder="Add a comment..."/>
+                <input type="text" value={commentText} onChange={(e) => setCommentText(e.target.value)} placeholder="Add a comment..."/>
                 <button type="submit">Post</button>
             </form>
         </PostCommentContainer>
@@ -34,6 +86,11 @@ const PostCommentContainer = styled.div`
         font-size: 14px;
         font-weight: 500;
         color: #777;
+        cursor: pointer;
+    }
+    
+    > p:hover {
+        text-decoration: underline;
     }
 
     > form {

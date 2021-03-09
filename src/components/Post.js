@@ -7,7 +7,7 @@ import { RiSendPlaneLine } from 'react-icons/ri';
 import PostComment from './PostComment';
 
 
-const Post = ({name, text, userPicture, uploadedImage, createdAt}) => {
+const Post = ({name, text, userPicture, uploadedImage, createdAt, postId}) => {
     return (
         <PostContainer>
             <PostHeader>
@@ -43,7 +43,7 @@ const Post = ({name, text, userPicture, uploadedImage, createdAt}) => {
 
             {text && <p> {name} <span> {text} </span> </p>}
 
-            <PostComment />
+            <PostComment postId={postId} />
         </PostContainer>
     )
 }
