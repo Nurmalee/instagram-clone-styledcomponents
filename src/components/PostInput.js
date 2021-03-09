@@ -16,7 +16,6 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
         e.preventDefault()
         
         if(textInput && imageFile){
-
             const instagramCloneStorageRef = instagramCloneStorage.ref(`images/${imageFile.name}`)
             instagramCloneStorageRef.put(imageFile).on("state_changed", (snap) => {
                 let percentage = (snap.bytesTransferred/snap.totalBytes) * 100
@@ -38,7 +37,18 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
                 if(imageUrl){
                     setShowPostInput(false)
                 }
+                setImageFile(null)
             })
+        } else if (textInput && !imageFile){
+            instagramCloneDb.collection("posts").add({
+                name: "Nurmalee",
+                userPicture: null,
+                text: textInput,
+                timestamp: firebaseServerTime,
+            })
+            setTextInput("")
+            setProgress(0)
+            setShowPostInput(false)
         }
     }
 
@@ -48,7 +58,8 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
             setImageFile(selectedImageFile)
             console.log(selectedImageFile)
         } else {
-            return ;
+            setImageFile(null)
+            // return ;
         }
     }
 
