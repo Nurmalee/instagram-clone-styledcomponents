@@ -87,23 +87,27 @@ const AddPostButton = styled.div`
     display: flex;
     align-items: center;
     cursor: pointer;
-    background-color: white;
+    /* background-color: white; */
     border-radius: 50px;
-    transition: 1000ms;
-    box-shadow: 0 0 10px black;
+    
+    
     z-index: 100;
 
     > p {
+        background-color: white;
+        border-radius: 50px;
+        box-shadow: 0 0 10px black;
+        transition: 1000ms;
+
         text-transform: capitalize;
         font-size: 14px;
         font-weight: 500;
-        padding: 0 10px 0 15px;
-        transition: 3000ms;
-        display: none;
+        padding: 0 10px;
+        opacity: 0;
     }
 
     :hover > p {
-        display: block;
+        opacity: 1;
     }
 `
 

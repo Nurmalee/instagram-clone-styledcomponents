@@ -99,7 +99,12 @@ const PostFormContainer = styled.div`
         flex: 1;
         padding: 10px 0;
         text-transform: capitalize;
-        /* border: 2px solid; */
+        background-color: #333;
+        color: white;
+        border-top: 1px solid;
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
         outline: none;
         display: flex;
         align-items: center;
@@ -110,13 +115,22 @@ const PostFormContainer = styled.div`
 
     >  form > div > label {
         padding: 0;
-        background-color: brown;
-        color: white;
-        border: 1px solid;
+        background-color: white;
+        color: black;
+        border-top: 1px solid;
+        border-left: none;
+        border-right: 1px solid;
         cursor: pointer;
         > p {
             font-size: 14px;
         }
+    }
+
+    > form > div > button:hover,
+    form > div > label:hover {
+        background-color: black;
+        color: white;
+        border: 1px solid;
     }
 
     > form > div > label > input {
