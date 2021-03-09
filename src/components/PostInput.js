@@ -41,7 +41,7 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
             <Backdrop>
             <PostFormContainer>
                 <form onSubmit={handlePostSubmit}>
-                    <textarea rows={10} placeholder="Say something about this post or just upload a picture..." value={textInput} onChange={(e) => setTextInput(e.target.value)} />
+                    <textarea rows={8} placeholder="Say something about this post or just upload a picture..." value={textInput} onChange={(e) => setTextInput(e.target.value)} />
 
                     <div>
                         <label htmlFor='file'>
@@ -89,6 +89,7 @@ const PostFormContainer = styled.div`
         padding: 20px;
         outline: none;
         border: none;
+        font-size: 14px;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
