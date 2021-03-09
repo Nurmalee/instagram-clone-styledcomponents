@@ -51,6 +51,7 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
                         </label>
                         <button type="submit" > <RiSendPlaneLine  style={{height: "20px", width: "20px", marginRight: "10px"}} /> send post </button>
                     </div>
+                    <ImageUploadProgressBar></ImageUploadProgressBar>
                 </form>
             </PostFormContainer>
             </Backdrop>
@@ -141,7 +142,11 @@ const PostFormContainer = styled.div`
 	    position: absolute;
 	    z-index: -1;
     }
+`
 
-  
-
+const ImageUploadProgressBar = styled.div`
+height: 3px;
+width: 10%;
+border-radius: 50px;
+background-color: red;
 `
