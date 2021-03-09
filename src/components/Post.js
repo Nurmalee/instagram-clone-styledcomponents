@@ -7,7 +7,7 @@ import { RiSendPlaneLine } from 'react-icons/ri';
 import PostComment from './PostComment';
 
 
-const Post = ({image, name, location}) => {
+const Post = ({name, text, userPicture, uploadedImage, createdAt}) => {
     return (
         <PostContainer>
             <PostHeader>
@@ -16,17 +16,17 @@ const Post = ({image, name, location}) => {
                         <PostAvatar src={image} />
                     </PostAvatarBg>
                 </PostHeaderImage> */}
-                <PostAvatar src={image} />
+                <PostAvatar src={uploadedImage} />
                 <PostHeaderTitle>
                     <h3>{name}</h3>
-                    {location && <p>{location}</p>}
+                    <p>{new Date(createdAt?.toDate()).toUTCString()} </p>
                 </PostHeaderTitle>
 
                 <ThreeDotsMoreInfoIcon />
             </PostHeader>
 
             <PostBody>
-                <img src={image} alt="imagefile"/>
+                <img src={uploadedImage} alt="imagefile"/>
             </PostBody>
 
             <PostIcons>
@@ -41,7 +41,7 @@ const Post = ({image, name, location}) => {
                 </PostIconsRight>
             </PostIcons>
 
-            <p> Name of Poster <span>What they posted, Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate quisquam aperiam officia id hic excepturi quam, deserunt maxime rerum illum. ...........</span> </p>
+            {text && <p> {name} <span> {text} </span> </p>}
 
             <PostComment />
         </PostContainer>
@@ -117,7 +117,7 @@ const PostHeaderTitle = styled.div`
     }
 
     > p {
-        font-size: 12px;
+        font-size: 11px;
     }
 `
 
@@ -148,8 +148,8 @@ const PostIcons = styled.div`
 `
 
 const HeartIcon = styled(BsHeart)`
-    height: 27px;
-    width: 27px;
+    height: 26px;
+    width: 26px;
     cursor: pointer;
 `
 

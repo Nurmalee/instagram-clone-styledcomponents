@@ -30,7 +30,7 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
                     userPicture: null,
                     uploadedImage: imageUrl,
                     text: textInput,
-                    timestamp: firebaseServerTime,
+                    createdAt: firebaseServerTime,
                 })
                 setTextInput("")
                 setProgress(null)
@@ -44,10 +44,10 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
                 name: "Nurmalee",
                 userPicture: null,
                 text: textInput,
-                timestamp: firebaseServerTime,
+                createdAt: firebaseServerTime,
             })
             setTextInput("")
-            setProgress(0)
+            setProgress(null)
             setShowPostInput(false)
         }
     }
