@@ -33,20 +33,6 @@ const AppBody = () => {
                     })
                 }
 
-                <Post name="Nurmalee" text="What an exquisite design!!!" uploadedImage="https://images.unsplash.com/photo-1601511086638-a6d6946ed7fd?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDQ2fHRvd0paRnNrcEdnfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-
-                {/* <Post name="Cristiano" text="Fruit is life!!!, I eat this fruits to stay fit and recover after every football game" uploadedImage="https://images.unsplash.com/photo-1551240370-1da11d874ed9?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDd8X2hiLWRsNFEtNFV8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" /> */}
-
-                {/* <Post name="WHoever Sends" location="Sender's Location" image="https://images.unsplash.com/photo-1614970800312-cf7417e37086?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3OXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-
-                <Post name="WHoever Sends" location="Sender's Location" image="https://images.unsplash.com/photo-1601511086638-a6d6946ed7fd?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDQ2fHRvd0paRnNrcEdnfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-
-                <Post name="WHoever Sends" location="Sender's Location" image="https://images.unsplash.com/photo-1572177218317-9e83f9a87971?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDIwfHJuU0tESHd3WVVrfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-
-                <Post name="WHoever Sends" location="Sender's Location" image="https://images.unsplash.com/photo-1527203561188-dae1bc1a417f?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDgxfHRvd0paRnNrcEdnfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-
-                <Post name="WHoever Sends" location="Sender's Location" image="https://avatars.githubusercontent.com/u/70635657?s=460&u=eea4bb2b6dff02e5993458cecc93018eca3bd17d&v=4" /> */}
-
             </MainBody>
 
             <AddPostButton onClick={() => setShowPostInput(!showPostInput)}>

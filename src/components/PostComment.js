@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Avatar } from '@material-ui/core'
 import styled from 'styled-components'
 import { VscSmiley } from 'react-icons/vsc';
 import { instagramCloneDb, firebaseServerTime } from '.././config/firebaseConfig'
@@ -28,6 +29,7 @@ const PostComment = ({postId}) => {
             .collection("comments")
             .add({
                 commentator: "DavidoOfficial",
+                commentatorPic: "https://images.unsplash.com/photo-1615125946484-86dd0a2cdb18?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8Xzh6Rkh1aFJoeW98fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
                 text: commentText,
                 createdAt: firebaseServerTime
             })
@@ -44,17 +46,19 @@ const PostComment = ({postId}) => {
             {
                 showLessComments ?
                 comments.slice(0, 3).map(comment => {
-                    const {commentator, text} = comment.data
+                    const {commentator, commentatorPic, text} = comment.data
                     return (
                         <SingleComment key={comment.id}>
+                            <CommentatorAvatar src={commentatorPic} />
                             <h3> {commentator} <span> {text} </span> </h3>
                         </SingleComment>
                     )
                 }) : 
                 comments.map(comment => {
-                    const {commentator, text} = comment.data
+                    const {commentator, commentatorPic, text} = comment.data
                     return (
                         <SingleComment key={comment.id}>
+                            <CommentatorAvatar src={commentatorPic} />
                             <h3> {commentator} <span> {text} </span> </h3>
                         </SingleComment>
                     )
@@ -119,15 +123,18 @@ const PostCommentContainer = styled.div`
 
 const SingleComment = styled.div`
     padding: 3px 15px;
+    display: flex;
+    align-items: center;
 
     >h3 {
-        font-size: 13px;
-        font-weight: 500;
+        font-size: 12px;
+        font-weight: 700;
+        color: #555;
     }
 
     >h3 > span {
         font-size: 11px;
-        font-weight: 100;
+        font-weight: 500;
         color: grey;
     }
 `
@@ -136,4 +143,9 @@ const CommentInputSmileyIcon = styled(VscSmiley)`
     height: 27px;
     width: 27px;
     cursor: pointer;
+`
+const CommentatorAvatar = styled(Avatar)`
+height: 25px !important;
+width: 25px !important;
+margin-right: 5px;
 `

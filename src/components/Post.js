@@ -1,13 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Avatar } from '@material-ui/core'
-import { BsHeart, BsThreeDots } from 'react-icons/bs';
-import { GoComment, GoTag } from 'react-icons/go';
-import { RiSendPlaneLine } from 'react-icons/ri';
-import PostComment from './PostComment';
+import { BsHeart, BsThreeDots } from 'react-icons/bs'
+import { GoComment, GoTag } from 'react-icons/go'
+import { RiSendPlaneLine } from 'react-icons/ri'
+import PostComment from './PostComment'
 
 
 const Post = ({name, text, userPicture, uploadedImage, createdAt, postId}) => {
+
     return (
         <PostContainer>
             <PostHeader>
