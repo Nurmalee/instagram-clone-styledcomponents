@@ -139,6 +139,7 @@ const PostFormContainer = styled.div`
         align-items: center;
         justify-content: center;
         font-weight: 900;
+        transition: 1000ms;
         /* border-radius: 5px; */
     }
 
