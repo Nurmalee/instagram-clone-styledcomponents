@@ -1,24 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Avatar } from '@material-ui/core'
 import { storiesData } from '.././data/appUiData'
 
+
+
 const Stories = () => {
-    const [stories, setStories] = useState([]);
-   
-
-    useEffect(() => {
-        const width = window.innerWidth;
-        setStories(storiesData)
-        if(width <= 650){
-            setStories(storiesData.slice(0,5))
-        }
-    }, [])
-
     return (
         <StoriesContainer>
             {
-                stories.map((story, index) => {
+                storiesData.map((story, index) => {
                     const {name, imageSrc} = story;
                     return (
                         <StoryContainer key={index}>
