@@ -9,13 +9,13 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
 
     const [textInput, setTextInput] = useState("")
     const [imageFile, setImageFile] = useState(null)
-    const [progress, setProgress] = useState(0)
+    const [progress, setProgress] = useState(null)
     const imageType = ["image/png", "image/jpg", "image/jpeg", "image/JPG", "image/JPEG", "image/PNG"]
 
     const handlePostSubmit = (e) => {
         e.preventDefault()
         
-        if(textInput && imageFile){
+        if(textInput || imageFile){
             const instagramCloneStorageRef = instagramCloneStorage.ref(`images/${imageFile.name}`)
             instagramCloneStorageRef.put(imageFile).on("state_changed", (snap) => {
                 let percentage = (snap.bytesTransferred/snap.totalBytes) * 100
@@ -33,7 +33,7 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
                     timestamp: firebaseServerTime,
                 })
                 setTextInput("")
-                setProgress(0)
+                setProgress(null)
                 if(imageUrl){
                     setShowPostInput(false)
                 }
