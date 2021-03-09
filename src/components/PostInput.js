@@ -2,28 +2,44 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { MdCloudUpload } from 'react-icons/md';
 import { RiSendPlaneLine } from 'react-icons/ri';
-import { instagramCloneDb, firebaseServerTime } from '.././config/firebaseConfig'
+import { instagramCloneDb, instagramCloneStorage, firebaseServerTime } from '.././config/firebaseConfig'
 
 
 const PostInput = ({showPostInput, setShowPostInput}) => {
 
     const [textInput, setTextInput] = useState("")
     const [imageFile, setImageFile] = useState(null)
+    const [progress, setProgress] = useState(0)
     const imageType = ["image/png", "image/jpg", "image/jpeg", "image/JPG", "image/JPEG", "image/PNG"]
 
     const handlePostSubmit = (e) => {
         e.preventDefault()
         
-        if(textInput){
-            instagramCloneDb.collection("posts").add({
-                name: "Nurmalee",
-                pictureUrl: null,
-                text: textInput,
-                timestamp: firebaseServerTime,
+        if(textInput && imageFile){
+
+            const instagramCloneStorageRef = instagramCloneStorage.ref(`images/${imageFile.name}`)
+            instagramCloneStorageRef.put(imageFile).on("state_changed", (snap) => {
+                let percentage = (snap.bytesTransferred/snap.totalBytes) * 100
+                setProgress(percentage)
+            }, (error) => {
+                alert(error)
+            }, async () => {
+                const imageUrl = await instagramCloneStorageRef.getDownloadURL()
+
+                instagramCloneDb.collection("posts").add({
+                    name: "Nurmalee",
+                    userPicture: null,
+                    uploadedImage: imageUrl,
+                    text: textInput,
+                    timestamp: firebaseServerTime,
+                })
+                setTextInput("")
+                setProgress(0)
+                if(imageUrl){
+                    setShowPostInput(false)
+                }
             })
         }
-        setTextInput("")
-        // setShowPostInput(false)
     }
 
     const attachImageFile = (e) => {
@@ -51,7 +67,7 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
                         </label>
                         <button type="submit" > <RiSendPlaneLine  style={{height: "20px", width: "20px", marginRight: "10px"}} /> send post </button>
                     </div>
-                    <ImageUploadProgressBar></ImageUploadProgressBar>
+                    {progress && <ImageUploadProgressBar style={{width: `${progress}%`}}></ImageUploadProgressBar>}
                 </form>
             </PostFormContainer>
             </Backdrop>
@@ -147,7 +163,6 @@ const PostFormContainer = styled.div`
 
 const ImageUploadProgressBar = styled.div`
 height: 3px;
-width: 10%;
 border-radius: 50px;
 background-color: red;
 `
