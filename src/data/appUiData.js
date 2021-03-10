@@ -13,12 +13,12 @@ export const storiesData = [
         imageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCWtt8VduiqgHuvY9tY2pQpPguYLrQRClbnA&usqp=CAU",
     },
     {
-        name: "Nicki Minaj",
-        imageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTopMx7dcoqspKyWtme4twKvHViAQg9YBkj-g&usqp=CAU",
+        name: "Kobe Diskey",
+        imageSrc: "https://images.unsplash.com/photo-1609966043644-17a7f591238c?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDEwfHRvd0paRnNrcEdnfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     },
     {
-        name: "Briana Amoore",
-        imageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-lIsxlQmxODlpTRxUy2fJmi14FwcsJbhbCg&usqp=CAU",
+        name: "BrianaPandelli",
+        imageSrc: "https://images.unsplash.com/photo-1615238910865-8c1995976d43?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDR8dG93SlpGc2twR2d8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     },
     {
         name: "Marques Brownlee",

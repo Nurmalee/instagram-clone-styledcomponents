@@ -41,7 +41,7 @@ const PostComment = ({postId}) => {
 
     return (
         <PostCommentContainer>
-            {comments.length > 0 && <p onClick={() => setShowLessComments(!showLessComments) }> {showLessComments ? `View all ${comments.length} ${comments.length <= 1 ? "comment" : "comments"}` : "Show less comments" } </p>}
+            {comments.length > 0 && <p onClick={() => setShowLessComments(!showLessComments) }> {showLessComments ? `View all ${comments.length} ${comments.length <= 1 ? "comment" : "comments"}` : `Show less comments` } </p>}
 
             {
                 showLessComments ?
