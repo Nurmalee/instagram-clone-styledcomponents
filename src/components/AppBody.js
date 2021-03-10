@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Post from './Post'
+import Header from './Header';
 import Stories from './Stories';
 import styled from 'styled-components'
 import Profile from './Profile';
@@ -20,6 +21,8 @@ const AppBody = () => {
     const [showPostInput, setShowPostInput] = useState(false);
 
     return (
+        <>
+         <Header />
         <AppBodyContainer>
             <MainBody>
                 <Stories />
@@ -47,6 +50,7 @@ const AppBody = () => {
             <PostInput showPostInput={showPostInput} setShowPostInput={setShowPostInput} />
                
         </AppBodyContainer>
+        </>
     )
 }
 
@@ -56,7 +60,7 @@ const AppBodyContainer = styled.main`
     /* border: 2px solid #ccc; */
     display: flex;
     margin: 0 auto;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     max-width: 930px;
 
     @media (max-width: 900px) {

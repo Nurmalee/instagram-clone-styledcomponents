@@ -33,7 +33,7 @@ const Header = () => {
 export default Header;
 
 const HeaderContainer = styled.section`
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;

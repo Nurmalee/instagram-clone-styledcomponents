@@ -1,11 +1,15 @@
 import './App.css';
 import AppBody from './components/AppBody';
-import Header from './components/Header';
+import ForgotPassword from './components/ForgotPassword';
+import Login from './components/Login';
+import Signup from './components/Signup';
 
 function App() {
   return (
     <div className="app">
-      <Header />
+      <Signup />
+      <Login />
+      <ForgotPassword />
       <AppBody />
     </div>
   );

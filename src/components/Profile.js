@@ -72,6 +72,7 @@ export default Profile
 
 const ProfileContainer = styled.div`
     padding: 20px 5px 20px 20px;
+    margin-top: 40px;
     /* border: 1px solid #ccc; */
     position: sticky;
     left:0;

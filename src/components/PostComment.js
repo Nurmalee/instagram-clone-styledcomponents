@@ -130,6 +130,10 @@ const SingleComment = styled.div`
         font-size: 12px;
         font-weight: 700;
         color: #555;
+
+        //alignself helps in proper alignment of commnents when they are too long, padding top helps when they are too short
+        align-self: flex-start;
+        padding-top: 3px;
     }
 
     >h3 > span {
@@ -145,6 +149,7 @@ const CommentInputSmileyIcon = styled(VscSmiley)`
     cursor: pointer;
 `
 const CommentatorAvatar = styled(Avatar)`
+align-self: flex-start;
 height: 25px !important;
 width: 25px !important;
 margin-right: 5px;
