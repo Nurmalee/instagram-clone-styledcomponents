@@ -33,6 +33,12 @@ const LoginContainer = styled.div`
     border: 1px solid;
     max-width: 400px;
     font-size: 14px;
+
+    > p > span {
+        cursor: pointer;
+        text-decoration: underline;
+        color: red;
+    }
 `
 
 const LoginHeader = styled.div`
