@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { MdCloudUpload } from 'react-icons/md';
 import { RiSendPlaneLine } from 'react-icons/ri';
-import { instagramCloneDb, instagramCloneStorage, firebaseServerTime } from '.././config/firebaseConfig'
+import { appDb, appStorage, firebaseServerTime } from '.././config/firebaseConfig'
 
 
 const PostInput = ({showPostInput, setShowPostInput}) => {
@@ -16,16 +16,16 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
         e.preventDefault()
         
         if(textInput || imageFile){
-            const instagramCloneStorageRef = instagramCloneStorage.ref(`images/${imageFile.name}`)
-            instagramCloneStorageRef.put(imageFile).on("state_changed", (snap) => {
+            const appStorageRef = appStorage.ref(`images/${imageFile.name}`)
+            appStorageRef.put(imageFile).on("state_changed", (snap) => {
                 let percentage = (snap.bytesTransferred/snap.totalBytes) * 100
                 setProgress(percentage)
             }, (error) => {
                 alert(error)
             }, async () => {
-                const imageUrl = await instagramCloneStorageRef.getDownloadURL()
+                const imageUrl = await appStorageRef.getDownloadURL()
 
-                instagramCloneDb.collection("posts").add({
+                appDb.collection("posts").add({
                     name: "Nurmalee",
                     userPicture: null,
                     uploadedImage: imageUrl,
@@ -40,7 +40,7 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
                 setImageFile(null)
             })
         } else if (textInput && !imageFile){
-            instagramCloneDb.collection("posts").add({
+            appDb.collection("posts").add({
                 name: "Nurmalee",
                 userPicture: null,
                 text: textInput,

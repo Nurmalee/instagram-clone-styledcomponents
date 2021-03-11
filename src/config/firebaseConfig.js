@@ -11,9 +11,9 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-const instagramCloneDb = firebase.firestore();
-const instagramCloneStorage = firebase.storage();
-const instagramCloneAuth = firebase.auth();
+const appDb = firebase.firestore();
+const appStorage = firebase.storage();
+const appAuth = firebase.auth();
 const firebaseServerTime = firebase.firestore.FieldValue.serverTimestamp();
 
-export { instagramCloneDb, instagramCloneStorage, instagramCloneAuth, firebaseServerTime }
+export { appDb, appStorage, appAuth, firebaseServerTime }

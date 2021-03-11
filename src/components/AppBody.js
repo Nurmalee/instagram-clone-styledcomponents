@@ -6,13 +6,13 @@ import styled from 'styled-components'
 import Profile from './Profile';
 import PostInput from './PostInput'
 import { BsPlusCircle } from 'react-icons/bs';
-import { instagramCloneDb } from '.././config/firebaseConfig'
+import { appDb } from '.././config/firebaseConfig'
 
 const AppBody = () => {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        instagramCloneDb.collection("posts").orderBy("createdAt", "desc").onSnapshot(snap => {
+        appDb.collection("posts").orderBy("createdAt", "desc").onSnapshot(snap => {
             setPosts(snap.docs.map(doc => ({ id: doc.id, data: doc.data()})))
         })
 

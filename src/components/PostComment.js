@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Avatar } from '@material-ui/core'
 import styled from 'styled-components'
 import { VscSmiley } from 'react-icons/vsc';
-import { instagramCloneDb, firebaseServerTime } from '.././config/firebaseConfig'
+import { appDb, firebaseServerTime } from '.././config/firebaseConfig'
 
 const PostComment = ({postId}) => {
     const [commentText, setCommentText] = useState("")
@@ -10,7 +10,7 @@ const PostComment = ({postId}) => {
     const [showLessComments, setShowLessComments] = useState(true)
 
     useEffect(() => {
-        instagramCloneDb.collection("posts")
+        appDb.collection("posts")
         .doc(postId)
         .collection("comments")
         .orderBy("createdAt", "desc")
@@ -24,7 +24,7 @@ const PostComment = ({postId}) => {
         e.preventDefault()
 
         if(postId && commentText){
-            instagramCloneDb.collection("posts")
+            appDb.collection("posts")
             .doc(postId)
             .collection("comments")
             .add({
