@@ -3,9 +3,12 @@ import styled from 'styled-components'
 import { MdCloudUpload } from 'react-icons/md';
 import { RiSendPlaneLine } from 'react-icons/ri';
 import { appDb, appStorage, firebaseServerTime } from '.././config/firebaseConfig'
+import { useUserAuth } from '.././contextAPI/userContext'
 
 
 const PostInput = ({showPostInput, setShowPostInput}) => {
+
+    const { currentUser } = useUserAuth()
 
     const [textInput, setTextInput] = useState("")
     const [imageFile, setImageFile] = useState(null)
@@ -26,8 +29,8 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
                 const imageUrl = await appStorageRef.getDownloadURL()
 
                 appDb.collection("posts").add({
-                    name: "Nurmalee",
-                    userPicture: null,
+                    name: currentUser?.displayName,
+                    userPicture: currentUser?.photoURL,
                     uploadedImage: imageUrl,
                     text: textInput,
                     createdAt: firebaseServerTime,
@@ -41,8 +44,8 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
             })
         } else if (textInput && !imageFile){
             appDb.collection("posts").add({
-                name: "Nurmalee",
-                userPicture: null,
+                name: currentUser?.displayName,
+                userPicture: currentUser?.photoURL,
                 text: textInput,
                 createdAt: firebaseServerTime,
             })
@@ -68,7 +71,7 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
             <Backdrop>
             <PostFormContainer>
                 <form onSubmit={handlePostSubmit}>
-                    <textarea rows={8} placeholder="Say something about this post or just upload a picture..." value={textInput} onChange={(e) => setTextInput(e.target.value)} />
+                    <textarea rows={9} placeholder={`Hi ${currentUser.displayName} make a post or just upload a picture...`} value={textInput} onChange={(e) => setTextInput(e.target.value)} />
 
                     <div>
                         <label htmlFor='file'>
@@ -84,7 +87,8 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
             </Backdrop>
         )
     }
-     return null;
+    
+    return null;
 }
 
 export default PostInput

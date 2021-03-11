@@ -3,8 +3,11 @@ import { Avatar } from '@material-ui/core'
 import styled from 'styled-components'
 import { VscSmiley } from 'react-icons/vsc';
 import { appDb, firebaseServerTime } from '.././config/firebaseConfig'
+import { useUserAuth } from '.././contextAPI/userContext'
 
 const PostComment = ({postId}) => {
+    const { currentUser } = useUserAuth()
+
     const [commentText, setCommentText] = useState("")
     const [comments, setComments] = useState([])
     const [showLessComments, setShowLessComments] = useState(true)
@@ -28,8 +31,8 @@ const PostComment = ({postId}) => {
             .doc(postId)
             .collection("comments")
             .add({
-                commentator: "DavidoOfficial",
-                commentatorPic: "https://images.unsplash.com/photo-1615125946484-86dd0a2cdb18?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8Xzh6Rkh1aFJoeW98fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                commentator: currentUser?.displayName,
+                commentatorPic: currentUser?.photoURL,
                 text: commentText,
                 createdAt: firebaseServerTime
             })
@@ -49,8 +52,8 @@ const PostComment = ({postId}) => {
                     const {commentator, commentatorPic, text} = comment.data
                     return (
                         <SingleComment key={comment.id}>
-                            <CommentatorAvatar src={commentatorPic} />
-                            <h3> {commentator} <span> {text} </span> </h3>
+                            <CommentatorAvatar src={commentatorPic}> {commentator[0].toUpperCase()} </CommentatorAvatar>
+                            <h3> {commentator.toLowerCase()} <span> {text} </span> </h3>
                         </SingleComment>
                     )
                 }) : 

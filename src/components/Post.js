@@ -17,9 +17,9 @@ const Post = ({name, text, userPicture, uploadedImage, createdAt, postId}) => {
                         <PostAvatar src={image} />
                     </PostAvatarBg>
                 </PostHeaderImage> */}
-                <PostAvatar src={uploadedImage} />
+                <PostAvatar src={userPicture}> {name[0].toUpperCase()} </PostAvatar>
                 <PostHeaderTitle>
-                    <h3>{name}</h3>
+                    <h3>{name.toLowerCase()}</h3>
                     <p>{new Date(createdAt?.toDate()).toUTCString()} </p>
                 </PostHeaderTitle>
 
@@ -42,7 +42,7 @@ const Post = ({name, text, userPicture, uploadedImage, createdAt, postId}) => {
                 </PostIconsRight>
             </PostIcons>
 
-            {text && <p> {name} <span> {text} </span> </p>}
+            {text && <p> {name.toLowerCase()} {text.length >= 100 ? <span> {text.slice(0, 100)} </span> : <span> {text} </span> } </p>}
 
             <PostComment postId={postId} />
         </PostContainer>

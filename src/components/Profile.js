@@ -1,15 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Avatar } from '@material-ui/core'
+import { useUserAuth } from '.././contextAPI/userContext'
 
 const Profile = () => {
+    const {currentUser} = useUserAuth()
+
     return (
         <ProfileContainer>
             <UserProfile>
-                <UserAvatar src="https://firebasestorage.googleapis.com/v0/b/linkedin-webapp-clone.appspot.com/o/images%2FLee%20Logo.png?alt=media&token=1927abc3-7155-4a13-9bb5-fb4c245c2e14" />
+                <UserAvatar src={currentUser.photoURL}> {currentUser.displayName[0].toUpperCase()} </UserAvatar>
                 <UserDetails>
-                    <h3> User Name </h3>
-                    <p> User Full Name </p>
+                    <h3> {currentUser.displayName} </h3>
+                    <p> You are signed in as <strong> {currentUser.displayName.toLowerCase()} </strong> </p>
                 </UserDetails>
 
                 <button> Sign Out </button>

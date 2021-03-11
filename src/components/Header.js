@@ -4,8 +4,12 @@ import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import { BsHeart, BsCompass } from 'react-icons/bs';
 import { RiMessengerLine, RiHome5Fill } from 'react-icons/ri';
 import { Avatar } from '@material-ui/core';
+import { useUserAuth } from '.././contextAPI/userContext'
 
 const Header = () => {
+
+    const {currentUser} = useUserAuth()
+
     return (
         <HeaderContainer>
             <HeaderBar>
@@ -23,7 +27,7 @@ const Header = () => {
                     <MessengerIcon />
                     <CompassIcon />
                     <HeartIcon />
-                    <HeaderAvatar src="https://firebasestorage.googleapis.com/v0/b/linkedin-webapp-clone.appspot.com/o/images%2FLee%20Logo.png?alt=media&token=1927abc3-7155-4a13-9bb5-fb4c245c2e14" />
+                    <HeaderAvatar src={currentUser.photoURL}> {currentUser.displayName[0].toUpperCase()} </HeaderAvatar>
                 </HeaderRight>
             </HeaderBar>
         </HeaderContainer>
