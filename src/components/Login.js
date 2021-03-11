@@ -12,7 +12,19 @@ const Login = () => {
     const [password, setPassword] = useState('')
     const [errorText, setErrorText] = useState("")
 
-   
+    const handleLogin = async (e) => {
+        e.preventDefault()
+
+        try {
+            setErrorText("")
+            await logInAction(email, password)
+            history.push("/")
+            setEmail('')
+            setPassword('')
+        } catch (error) {
+            setErrorText(error.message)
+        }
+    }
 
     return (
         <LoginContainer>
