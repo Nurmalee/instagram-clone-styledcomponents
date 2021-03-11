@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link, useHistory } from 'react-router-dom'
 
 const ForgotPassword = () => {
     return (
@@ -14,8 +15,8 @@ const ForgotPassword = () => {
             </LoginForm>
 
             <LoginBottom>
-                <p>Already signed up? <span> Click here to sign in</span>  </p>
-                <p> Need a new account? <span> Click here to sign up</span>  </p>
+                <p>Already signed up? <Link to='/login'> Click here to sign in</Link>  </p>
+                <p> Need a new account? <Link to='/signup'> Click here to sign up</Link>  </p>
             </LoginBottom>  
         </LoginContainer>
     )

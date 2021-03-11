@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link, useHistory } from 'react-router-dom'
 
 const Login = () => {
     return (
@@ -15,8 +16,8 @@ const Login = () => {
             </LoginForm>
 
             <LoginBottom>
-                <p> Forgot your password? <span> Get help signing in </span>  </p>
-                <p> Need a new account? <span> Click here to sign up</span>  </p>
+                <p> Forgot your password? <Link to="/resetpassword"> Get help signing in </Link>  </p>
+                <p> Need a new account? <Link to="/signup"> Click here to sign up</Link>  </p>
             </LoginBottom>     
         </LoginContainer>
     )

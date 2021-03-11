@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { Link, useHistory } from 'react-router-dom'
 
 
 const Signup = () => {
@@ -33,7 +34,7 @@ const Signup = () => {
             </LoginForm>
 
             <LoginBottom>
-                <p>Already signed up? <span> Click here to sign in</span>  </p>
+                <p>Already signed up? <Link to='/login' > Click here to sign in</Link>  </p>
             </LoginBottom>
         </LoginContainer>
     )
