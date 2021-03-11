@@ -15,6 +15,7 @@ const Signup = () => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [errorText, setErrorText] = useState("")
+    const [loading, setLoading] = useState(false)
     
 
     const handleSignUp = async (e) => {
@@ -27,6 +28,7 @@ const Signup = () => {
 
         try {
             setErrorText("")
+            setLoading(true)
             await signUpAction(email, password, userName, pictureUrl)
             history.push("/login")
             setEmail('')
@@ -36,7 +38,7 @@ const Signup = () => {
         } catch (error) {
             setErrorText(error.message)
         }
-            
+        setLoading(false)
     }
 
 
@@ -54,7 +56,7 @@ const Signup = () => {
                 <input type="text" placeholder="Picture Url" value={pictureUrl} onChange={e => setPictureUrl(e.target.value)} />
                 <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
                 <input type="password" placeholder="Confirm Password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
-                <button type="submit"> Sign Up </button>
+                <button type="submit" disabled={loading}> Sign Up </button>
             </LoginForm>
 
             <LoginBottom>

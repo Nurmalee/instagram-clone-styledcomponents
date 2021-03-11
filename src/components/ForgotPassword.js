@@ -1,17 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useUserAuth } from '.././contextAPI/userContext'
 
 const ForgotPassword = () => {
+
+    const { resetPasswordAction } = useUserAuth()
+   
+    const [email, setEmail] = useState('')
+    const [loading, setLoading] = useState(false)
+    const [errorText, setErrorText] = useState("")
+
+    const handleResetPassword = async (e) => {
+        e.preventDefault()
+
+        try {
+            setErrorText("")
+            setLoading(true)
+            await resetPasswordAction(email)
+            setErrorText('Please check your inbox for further directions')
+            setEmail('')
+        } catch (error) {
+            setErrorText(error.message)
+        }
+        setLoading(false)
+    }
+
     return (
         <LoginContainer>
             <LoginHeader>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/%C4%B0nstagram-Profilime-Kim-Bakt%C4%B1-1.png" alt="instagram"/>
             </LoginHeader>
 
-            <LoginForm>
+            {errorText && <p>{errorText}</p>}
+
+            <LoginForm  onSubmit={handleResetPassword}>
                 <input type="text" placeholder="Email Address"/>
-                <button type="submit"> Reset Password </button>
+                <button type="submit" disabled={loading}> Reset Password </button>
             </LoginForm>
 
             <LoginBottom>
