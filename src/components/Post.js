@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Avatar } from '@material-ui/core'
 import { BsHeart, BsThreeDots } from 'react-icons/bs'
@@ -8,6 +8,17 @@ import PostComment from './PostComment'
 
 
 const Post = ({name, text, userPicture, uploadedImage, createdAt, postId}) => {
+
+    const [ showLess, setShowLess ] = useState(true)
+    const [ showButton, setShowButton ] = useState(false)
+
+    useEffect(() => {
+        if(text.length > 100){
+            setShowButton(true)
+        } else {
+            setShowButton(false)
+        }
+    }, [text.length])
 
     return (
         <PostContainer>
@@ -42,7 +53,8 @@ const Post = ({name, text, userPicture, uploadedImage, createdAt, postId}) => {
                 </PostIconsRight>
             </PostIcons>
 
-            {text && <p> {name.toLowerCase()} {text.length >= 100 ? <span> {text.slice(0, 100)} </span> : <span> {text} </span> } </p>}
+            {/* {text && <p> {name.toLowerCase()} {showLess ? <span> {text.slice(0, 20)} <button onClick={() => setShowLess(!showLess)}> ... more</button> </span> : <span> {text} </span> } </p>} */}
+            {text && <p> {name.toLowerCase()} <span> {showLess ?  text.slice(0, 100) : text} </span> {showButton && <button onClick={() => setShowLess(!showLess)}> {showLess ? '... more' : '... less'}</button>} </p>}
 
             <PostComment postId={postId} />
         </PostContainer>
@@ -69,6 +81,16 @@ const PostContainer = styled.div`
         font-weight: 100;
         color: grey;
     }
+
+    > p > button {
+            color: #444;
+            /* background-color: transparent; */
+            outline: none;
+            border: none;
+            font-weight: 700;
+            font-size: 12px;
+            margin-left: 10px;
+        }
 
     @media (max-width: 650px) {
         background-color: transparent;
