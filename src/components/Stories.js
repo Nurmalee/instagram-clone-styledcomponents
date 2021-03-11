@@ -28,10 +28,10 @@ const Stories = () => {
 export default Stories
 
 const StoriesContainer = styled.section`
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     padding: 20px 10px;
     background-color: white;
-    margin: 8px auto 0 auto;
+    margin: 2px auto 0 auto;
     display: flex;
     justify-content: space-around;
     overflow-x: scroll;

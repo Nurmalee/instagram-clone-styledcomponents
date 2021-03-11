@@ -1,17 +1,30 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 import { Link, useHistory } from 'react-router-dom'
+import { useUserAuth } from '.././contextAPI/userContext'
 
 const Login = () => {
+
+    const { logInAction } = useUserAuth()
+    const history =  useHistory()
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [errorText, setErrorText] = useState("")
+
+   
+
     return (
         <LoginContainer>
             <LoginHeader>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/%C4%B0nstagram-Profilime-Kim-Bakt%C4%B1-1.png" alt="instagram"/>
             </LoginHeader>
 
-            <LoginForm>
-                <input type="text" placeholder="Email Address"/>
-                <input type="password" placeholder="Password"/>
+            {errorText && <p>{errorText}</p>}
+
+            <LoginForm  onSubmit={handleLogin}>
+                <input type="email" placeholder="Email Address" value={email} onChange={e => setEmail(e.target.value)} />
+                <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
                 <button type="submit"> Log In</button>
             </LoginForm>
 
@@ -52,7 +65,7 @@ const LoginHeader = styled.div`
     }
 `
 
-const LoginForm = styled.div`
+const LoginForm = styled.form`
     display: flex;
     flex-direction: column;
 

@@ -1,20 +1,42 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link, useHistory } from 'react-router-dom'
+import { useUserAuth } from '.././contextAPI/userContext'
 
 
 const Signup = () => {
 
-    const [user, setUser] = useState({
-        email: '',
-        userName: '',
-        pictureUrl: '',
-        password: '',
-        confirmPassword: '',
-    })
+    const { signUpAction } = useUserAuth()
+    const history =  useHistory()
 
-    const handleLogin = (e) => {
-        e.preveventDefault()
+    const [email, setEmail] = useState('')
+    const [userName, setUserName] = useState('')
+    const [pictureUrl, setPictureUrl] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
+    const [errorText, setErrorText] = useState("")
+    
+
+    const handleSignUp = async (e) => {
+        e.preventDefault()
+
+        if(password !== confirmPassword){
+            setErrorText("Passwords must be exact")
+            return;
+        }
+
+        try {
+            setErrorText("")
+            await signUpAction(email, password, userName, pictureUrl)
+            history.push("/login")
+            setEmail('')
+            setUserName('')
+            setPassword('')
+            setConfirmPassword('')
+        } catch (error) {
+            setErrorText(error.message)
+        }
+            
     }
 
 
@@ -24,12 +46,14 @@ const Signup = () => {
                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/%C4%B0nstagram-Profilime-Kim-Bakt%C4%B1-1.png" alt="instagram"/>
             </LoginHeader>
 
-            <LoginForm onSubmit={handleLogin}>
-                <input type="email" placeholder="Email Address" value={user.email} onChange={e => setUser(e.target.value)} />
-                <input type="text" placeholder="User Display Name" value={user.userName} onChange={e => setUser(e.target.value)} />
-                <input type="text" placeholder="Picture Url" value={user.pictureUrl} onChange={e => setUser(e.target.value)} />
-                <input type="password" placeholder="Password" value={user.password} onChange={e => setUser(e.target.value)} />
-                <input type="password" placeholder="Confirm Password" value={user.confirmPassword} onChange={e => setUser(e.target.value)} />
+            {errorText && <p>{errorText}</p>}
+
+            <LoginForm onSubmit={handleSignUp}>
+                <input type="email" placeholder="Email Address" value={email} onChange={e => setEmail(e.target.value)} />
+                <input type="text" placeholder="User Display Name" value={userName} onChange={e => setUserName(e.target.value)} />
+                <input type="text" placeholder="Picture Url" value={pictureUrl} onChange={e => setPictureUrl(e.target.value)} />
+                <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+                <input type="password" placeholder="Confirm Password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
                 <button type="submit"> Sign Up </button>
             </LoginForm>
 
@@ -69,7 +93,7 @@ const LoginHeader = styled.div`
     }
 `
 
-const LoginForm = styled.div`
+const LoginForm = styled.form`
     display: flex;
     flex-direction: column;
 
