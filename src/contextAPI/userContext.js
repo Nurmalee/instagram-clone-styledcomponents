@@ -44,7 +44,7 @@ const UserAuthContextProvider = ({children}) => {
             setCurrentUser(user)
             setLoading(false)
         })
-        // return unsubscribe
+        return unsubscribe
     }, [])
 
 

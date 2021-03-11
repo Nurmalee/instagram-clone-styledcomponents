@@ -28,7 +28,7 @@ const Stories = () => {
 export default Stories
 
 const StoriesContainer = styled.section`
-    /* border: 1px solid #ccc; */
+    border: 1px solid #ccc;
     padding: 20px 10px;
     background-color: white;
     margin: 2px auto 0 auto;
