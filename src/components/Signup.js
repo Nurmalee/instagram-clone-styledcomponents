@@ -1,19 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
+
 const Signup = () => {
+
+    const [user, setUser] = useState({
+        email: '',
+        userName: '',
+        pictureUrl: '',
+        password: '',
+        confirmPassword: '',
+    })
+
+    const handleLogin = (e) => {
+        e.preveventDefault()
+    }
+
+
     return (
         <LoginContainer>
             <LoginHeader>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/%C4%B0nstagram-Profilime-Kim-Bakt%C4%B1-1.png" alt="instagram"/>
             </LoginHeader>
 
-            <LoginForm>
-                <input type="text" placeholder="Email Address"/>
-                <input type="text" placeholder="User Display Name"/>
-                <input type="password" placeholder="Picture Url"/>
-                <input type="password" placeholder="Password"/>
-                <input type="password" placeholder="Confirm Password"/>
+            <LoginForm onSubmit={handleLogin}>
+                <input type="email" placeholder="Email Address" value={user.email} onChange={e => setUser(e.target.value)} />
+                <input type="text" placeholder="User Display Name" value={user.userName} onChange={e => setUser(e.target.value)} />
+                <input type="text" placeholder="Picture Url" value={user.pictureUrl} onChange={e => setUser(e.target.value)} />
+                <input type="password" placeholder="Password" value={user.password} onChange={e => setUser(e.target.value)} />
+                <input type="password" placeholder="Confirm Password" value={user.confirmPassword} onChange={e => setUser(e.target.value)} />
                 <button type="submit"> Sign Up </button>
             </LoginForm>
 

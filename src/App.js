@@ -3,15 +3,22 @@ import AppBody from './components/AppBody';
 import ForgotPassword from './components/ForgotPassword';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 
 function App() {
   return (
-    <div className="app">
-      <Signup />
-      <Login />
-      <ForgotPassword />
-      <AppBody />
+    <Router>
+      <div className="app">
+        <Switch>
+          <Route  exact path='/' component={AppBody} />
+          <Route  exact path='/signup' component={Signup} />
+          <Route  exact path='/login' component={Login} />
+          <Route  exact path='/resetpassword' component={ForgotPassword} />
+        </Switch>
     </div>
+
+    </Router>
+    
   );
 }
 
