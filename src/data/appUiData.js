@@ -1,9 +1,9 @@
 // import React from 'react'
 export const storiesData = [
-    {
-        name: "The Lee",
-        imageSrc: "https://firebasestorage.googleapis.com/v0/b/linkedin-webapp-clone.appspot.com/o/images%2FLee%20Logo.png?alt=media&token=1927abc3-7155-4a13-9bb5-fb4c245c2e14",
-    },
+    // {
+    //     name: "The Lee",
+    //     imageSrc: "https://firebasestorage.googleapis.com/v0/b/linkedin-webapp-clone.appspot.com/o/images%2FLee%20Logo.png?alt=media&token=1927abc3-7155-4a13-9bb5-fb4c245c2e14",
+    // },
     {
         name: "Rihanna",
         imageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_nWUWzq7si2Z0V91ziLuth57egprQSbQcXw&usqp=CAU",

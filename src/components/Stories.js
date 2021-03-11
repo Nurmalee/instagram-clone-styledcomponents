@@ -2,12 +2,20 @@ import React from 'react'
 import styled from 'styled-components'
 import { Avatar } from '@material-ui/core'
 import { storiesData } from '.././data/appUiData'
-
-
+import { useUserAuth } from '.././contextAPI/userContext'
 
 const Stories = () => {
+    const { currentUser } = useUserAuth()
+
     return (
         <StoriesContainer>
+            <StoryContainer>
+                <AvatarBg>
+                    <StoriesAvatar src={currentUser.photoURL}> {currentUser.displayName[0].toUpperCase()} </StoriesAvatar>
+                </AvatarBg>
+                {currentUser.displayName.length <= 10 ? <p> {currentUser.displayName} </p> : <p> {currentUser.displayName.slice(0,10)}... </p>}
+            </StoryContainer>
+
             {
                 storiesData.map((story, index) => {
                     const {name, imageSrc} = story;

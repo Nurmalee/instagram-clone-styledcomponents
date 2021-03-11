@@ -40,7 +40,7 @@ const UserAuthContextProvider = ({children}) => {
     }
 
     useEffect(() => {
-        const unsubscribe = appAuth.onAuthStateChanged(user => {
+        appAuth.onAuthStateChanged(user => {
             setCurrentUser(user)
             setLoading(false)
         })
