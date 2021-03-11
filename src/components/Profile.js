@@ -4,7 +4,7 @@ import { Avatar } from '@material-ui/core'
 import { useUserAuth } from '.././contextAPI/userContext'
 
 const Profile = () => {
-    const {currentUser} = useUserAuth()
+    const {currentUser, signOutAction} = useUserAuth()
 
     return (
         <ProfileContainer>
@@ -15,7 +15,7 @@ const Profile = () => {
                     <p> You are signed in as <strong> {currentUser.displayName.toLowerCase()} </strong> </p>
                 </UserDetails>
 
-                <button> Sign Out </button>
+                <button onClick={() => signOutAction()}> Sign Out </button>
             </UserProfile>
 
             <UserSuggestions>
