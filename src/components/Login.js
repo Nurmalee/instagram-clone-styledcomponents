@@ -5,24 +5,32 @@ import { useUserAuth } from '.././contextAPI/userContext'
 
 const Login = () => {
 
-    const { logInAction } = useUserAuth()
-    const history =  useHistory()
+ 
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [errorText, setErrorText] = useState("")
     const [loading, setLoading] = useState(false)
 
+    const { logInAction } = useUserAuth()
+    const history =  useHistory()
+
     const handleLogin = async (e) => {
         e.preventDefault()
+
+        if(!email || !password){
+            setErrorText("Did you sign up already? You have to provide an Email Address and a Password.")
+            setTimeout(() => {
+                setErrorText("")
+            }, 5000)
+            return;
+        }
 
         try {
             setErrorText("")
             setLoading(true)
             await logInAction(email, password)
             history.push("/")
-            setEmail('')
-            setPassword('')
         } catch (error) {
             setErrorText(error.message)
         }
@@ -55,7 +63,7 @@ export default Login
 
 const LoginContainer = styled.div`
     display: grid;
-    margin: 100px auto;
+    margin: 70px auto;
     padding: 20px 10px;
     text-align:center;
     border: 1px solid;
@@ -63,10 +71,13 @@ const LoginContainer = styled.div`
     max-width: 400px;
     font-size: 14px;
 
-    > p > span {
+    > p {
         cursor: pointer;
-        text-decoration: underline;
+        padding: 10px;
+        margin-bottom: 15px;
+        font-weight: 600;
         color: red;
+        background-color: rgba(200, 0, 0, 0.2);
     }
 `
 
@@ -107,7 +118,8 @@ const LoginForm = styled.form`
         outline: none;
         border: 1px solid black;
         border-radius: 2px;
-        background-color: white;
+        background-color: #333;
+        color: grey;
         transition: 1500ms;
 
         :hover {

@@ -27,7 +27,7 @@ const Header = () => {
                     <MessengerIcon />
                     <CompassIcon />
                     <HeartIcon />
-                    <HeaderAvatar src={currentUser.photoURL}> {currentUser.displayName[0].toUpperCase()} </HeaderAvatar>
+                    <HeaderAvatar src={currentUser.photoURL}> {currentUser.displayName[0].toUpperCase()}  </HeaderAvatar>
                 </HeaderRight>
             </HeaderBar>
         </HeaderContainer>

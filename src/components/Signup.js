@@ -21,6 +21,14 @@ const Signup = () => {
     const handleSignUp = async (e) => {
         e.preventDefault()
 
+        if(!email || !password || !userName){
+            setErrorText("You atleast have to provide an Email Address, a Username and a Password.")
+            setTimeout(() => {
+                setErrorText("")
+            }, 5000)
+            return;
+        }
+
         if(password !== confirmPassword){
             setErrorText("Passwords must be exact")
             return;
@@ -30,11 +38,7 @@ const Signup = () => {
             setErrorText("")
             setLoading(true)
             await signUpAction(email, password, userName, pictureUrl)
-            history.push("/login")
-            setEmail('')
-            setUserName('')
-            setPassword('')
-            setConfirmPassword('')
+            history.push("/")
         } catch (error) {
             setErrorText(error.message)
         }
@@ -70,7 +74,7 @@ export default Signup
 
 const LoginContainer = styled.div`
     display: grid;
-    margin: 100px auto;
+    margin: 70px auto;
     padding: 20px 10px;
     text-align:center;
     border: 1px solid;
@@ -78,10 +82,13 @@ const LoginContainer = styled.div`
     max-width: 400px;
     font-size: 14px;
 
-    > p > span {
+    > p {
         cursor: pointer;
-        text-decoration: underline;
+        padding: 10px;
+        margin-bottom: 15px;
+        font-weight: 600;
         color: red;
+        background-color: rgba(200, 0, 0, 0.2);
     }
 `
 
@@ -106,6 +113,7 @@ const LoginForm = styled.form`
         font-size: 14px;
         outline: none;
         border: none;
+        /* box-shadow: 0 0 1px black; */
 
         :focus {
             outline: 1px solid;
@@ -122,7 +130,8 @@ const LoginForm = styled.form`
         outline: none;
         border: 1px solid black;
         border-radius: 2px;
-        background-color: white;
+        background-color: #333;
+        color: grey;
         transition: 1500ms;
 
         :hover {

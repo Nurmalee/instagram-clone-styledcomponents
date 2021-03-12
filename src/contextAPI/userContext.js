@@ -22,8 +22,6 @@ const UserAuthContextProvider = ({children}) => {
                 })
             })
             .catch(error => alert(error))
-        } else {
-            alert("Please fill in you NAME, PASSWORD AND USERNAME")
         }
     }
 

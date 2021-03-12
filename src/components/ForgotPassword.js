@@ -10,15 +10,21 @@ const ForgotPassword = () => {
     const [email, setEmail] = useState('')
     const [loading, setLoading] = useState(false)
     const [errorText, setErrorText] = useState("")
+    const [success, setSuccess] = useState("")
 
     const handleResetPassword = async (e) => {
         e.preventDefault()
+
+        if(!email){
+            setSuccess("green")
+            setErrorText('Please check your inbox for further directions')
+            return;
+        }
 
         try {
             setErrorText("")
             setLoading(true)
             await resetPasswordAction(email)
-            setErrorText('Please check your inbox for further directions')
             setEmail('')
         } catch (error) {
             setErrorText(error.message)
@@ -32,10 +38,10 @@ const ForgotPassword = () => {
                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/%C4%B0nstagram-Profilime-Kim-Bakt%C4%B1-1.png" alt="instagram"/>
             </LoginHeader>
 
-            {errorText && <p>{errorText}</p>}
+            {errorText && <p style={{color: `${success}`}}>{errorText}</p>}
 
             <LoginForm  onSubmit={handleResetPassword}>
-                <input type="text" placeholder="Email Address"/>
+                <input type="email" placeholder="Email Address" value={email} onChange={e => setEmail(e.target.value)}/>
                 <button type="submit" disabled={loading}> Reset Password </button>
             </LoginForm>
 
@@ -51,7 +57,7 @@ export default ForgotPassword
 
 const LoginContainer = styled.div`
     display: grid;
-    margin: 100px auto;
+    margin: 70px auto;
     padding: 20px 10px;
     text-align:center;
     border: 1px solid;
@@ -59,6 +65,15 @@ const LoginContainer = styled.div`
     max-width: 400px;
     font-size: 14px;
     position: relative;
+
+    > p {
+        cursor: pointer;
+        padding: 10px;
+        margin-bottom: 15px;
+        font-weight: 600;
+        color: red;
+        background-color: rgba(200, 0, 0, 0.2);
+    }
 `
 
 const LoginHeader = styled.div`
@@ -98,7 +113,8 @@ const LoginForm = styled.div`
         outline: none;
         border: 1px solid black;
         border-radius: 2px;
-        background-color: white;
+        background-color: #333;
+        color: grey;
         transition: 1500ms;
 
         :hover {
