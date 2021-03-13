@@ -23,9 +23,6 @@ const Signup = () => {
 
         if(!email || !password || !userName){
             setErrorText("You atleast have to provide an Email Address, a Username and a Password.")
-            setTimeout(() => {
-                setErrorText("")
-            }, 5000)
             return;
         }
 
@@ -65,6 +62,7 @@ const Signup = () => {
 
             <LoginBottom>
                 <p>Already signed up? <Link to='/login' > Click here to sign in</Link>  </p>
+                <p>Copyright 2021 LeeEffect</p>
             </LoginBottom>
         </LoginContainer>
     )
@@ -77,8 +75,6 @@ const LoginContainer = styled.div`
     margin: 70px auto;
     padding: 20px 10px;
     text-align:center;
-    border: 1px solid;
-    border-radius: 2px;
     max-width: 400px;
     font-size: 14px;
 
@@ -100,6 +96,10 @@ const LoginHeader = styled.div`
         object-fit: contain;
         cursor: pointer;
     }
+
+    > p {
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    }
 `
 
 const LoginForm = styled.form`
@@ -113,7 +113,8 @@ const LoginForm = styled.form`
         font-size: 14px;
         outline: none;
         border: none;
-        /* box-shadow: 0 0 1px black; */
+        border-radius: 2px;
+        box-shadow: 0 0 3px black;
 
         :focus {
             outline: 1px solid;

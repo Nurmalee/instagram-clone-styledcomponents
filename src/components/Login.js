@@ -5,24 +5,19 @@ import { useUserAuth } from '.././contextAPI/userContext'
 
 const Login = () => {
 
- 
+    const { logInAction } = useUserAuth()
+    const history =  useHistory()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [errorText, setErrorText] = useState("")
     const [loading, setLoading] = useState(false)
 
-    const { logInAction } = useUserAuth()
-    const history =  useHistory()
-
     const handleLogin = async (e) => {
         e.preventDefault()
 
         if(!email || !password){
             setErrorText("Did you sign up already? You have to provide an Email Address and a Password.")
-            setTimeout(() => {
-                setErrorText("")
-            }, 5000)
             return;
         }
 
@@ -54,6 +49,7 @@ const Login = () => {
             <LoginBottom>
                 <p> Forgot your password? <Link to="/resetpassword"> Get help signing in </Link>  </p>
                 <p> Need a new account? <Link to="/signup"> Click here to sign up</Link>  </p>
+                <p>Copyright 2021 LeeEffect</p>
             </LoginBottom>     
         </LoginContainer>
     )
@@ -66,8 +62,6 @@ const LoginContainer = styled.div`
     margin: 70px auto;
     padding: 20px 10px;
     text-align:center;
-    border: 1px solid;
-    border-radius: 2px;
     max-width: 400px;
     font-size: 14px;
 
@@ -102,6 +96,8 @@ const LoginForm = styled.form`
         font-size: 14px;
         outline: none;
         border: none;
+        border-radius: 2px;
+        box-shadow: 0 0 3px black;
 
         :focus {
             outline: 1px solid;

@@ -16,8 +16,7 @@ const ForgotPassword = () => {
         e.preventDefault()
 
         if(!email){
-            setSuccess("green")
-            setErrorText('Please check your inbox for further directions')
+            setErrorText('You have to specify your registered email address')
             return;
         }
 
@@ -25,7 +24,8 @@ const ForgotPassword = () => {
             setErrorText("")
             setLoading(true)
             await resetPasswordAction(email)
-            setEmail('')
+            setSuccess("green")
+            setErrorText('Please check your inbox for further directions')
         } catch (error) {
             setErrorText(error.message)
         }
@@ -38,7 +38,7 @@ const ForgotPassword = () => {
                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/%C4%B0nstagram-Profilime-Kim-Bakt%C4%B1-1.png" alt="instagram"/>
             </LoginHeader>
 
-            {errorText && <p style={{color: `${success}`}}>{errorText}</p>}
+            {errorText && <p style={{color: `${success}`, backgroundColor: "#ccc"}}>{errorText}</p>}
 
             <LoginForm  onSubmit={handleResetPassword}>
                 <input type="email" placeholder="Email Address" value={email} onChange={e => setEmail(e.target.value)}/>
@@ -48,6 +48,7 @@ const ForgotPassword = () => {
             <LoginBottom>
                 <p>Already signed up? <Link to='/login'> Click here to sign in</Link>  </p>
                 <p> Need a new account? <Link to='/signup'> Click here to sign up</Link>  </p>
+                <p>Copyright 2021 LeeEffect</p>
             </LoginBottom>  
         </LoginContainer>
     )
@@ -60,8 +61,6 @@ const LoginContainer = styled.div`
     margin: 70px auto;
     padding: 20px 10px;
     text-align:center;
-    border: 1px solid;
-    border-radius: 2px;
     max-width: 400px;
     font-size: 14px;
     position: relative;
@@ -86,7 +85,7 @@ const LoginHeader = styled.div`
     }
 `
 
-const LoginForm = styled.div`
+const LoginForm = styled.form`
     display: flex;
     flex-direction: column;
 
@@ -97,6 +96,8 @@ const LoginForm = styled.div`
         font-size: 14px;
         outline: none;
         border: none;
+        border-radius: 2px;
+        box-shadow: 0 0 3px black;
 
         :focus {
             outline: 1px solid;
