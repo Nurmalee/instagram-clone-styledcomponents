@@ -55,10 +55,9 @@ const PostInput = ({showPostInput, setShowPostInput, inputError, setInputError})
         let selectedImageFile = e.target.files[0];
         if(selectedImageFile && imageType.includes(selectedImageFile.type)){
             setImageFile(selectedImageFile)
-            console.log(selectedImageFile)
         } else {
             setImageFile(null)
-            // return ;
+            return ;
         }
     }
 
@@ -79,6 +78,7 @@ const PostInput = ({showPostInput, setShowPostInput, inputError, setInputError})
                         <button type="submit" > <RiSendPlaneLine  style={{height: "20px", width: "20px", marginRight: "10px"}} /> send post </button>
                     </div>
                     {progress && <ImageUploadProgressBar style={{width: `${progress}%`}}></ImageUploadProgressBar>}
+                    {imageFile && <p>{imageFile.name}</p>}
                 </form>
             </PostFormContainer>
             </Backdrop>

@@ -35,7 +35,7 @@ const Signup = () => {
             setErrorText("")
             setLoading(true)
             await signUpAction(email, password, userName, pictureUrl)
-            history.push("/")
+            history.push("/login")
         } catch (error) {
             setErrorText(error.message)
         }
