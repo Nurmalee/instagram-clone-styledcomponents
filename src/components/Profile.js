@@ -3,20 +3,27 @@ import styled from 'styled-components'
 import { Avatar } from '@material-ui/core'
 import { useUserAuth } from '.././contextAPI/userContext'
 
-const url = ''
+const url = 'https://randomuser.me/api/?results=4'
 
 const Profile = () => {
     const {currentUser, signOutAction} = useUserAuth()
     const [suggestions, setSuggestions] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        const getRandomUsers = async () => {
-            const fetchUsers = await fetch(url)
-            const users = await fetchUsers.json()
-            setSuggestions(users)
+        setIsLoading(true)
+        try {
+            const getRandomUsers = async () => {
+                const resp = await fetch(url)
+                const users = await resp.json()
+                setSuggestions(users.results)
+            }
+            getRandomUsers()
+            setIsLoading(false)
+        } catch (error) {
+            console.log(error.message);
         }
-        getRandomUsers()
-    })
+    }, [])
 
     return (
         <ProfileContainer>
@@ -32,45 +39,24 @@ const Profile = () => {
 
             <UserSuggestions>
                 <p>Suggestions For You</p>
-                <SingleSuggestion>
-                    <SuggestedAvatar src="https://images.unsplash.com/photo-1585399000684-d2f72660f092?ixid=MXwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                    <SuggestedDetails>
-                        <h3> User Name </h3>
-                        <p> Suggested For You </p>
-                    </SuggestedDetails>
 
-                    <button> Follow </button>
-                </SingleSuggestion>
+                {!isLoading && 
+                    suggestions.map((suggestion, i) => {
+                        const {name:{first, last}, picture:{large}} = suggestion
+                        return (
+                            <SingleSuggestion>
+                                <SuggestedAvatar src={large} />
+                                <SuggestedDetails>
+                                    <h3> {first} {last} </h3>
+                                    <p> Suggested For You </p>
+                                </SuggestedDetails>
 
-                <SingleSuggestion>
-                    <SuggestedAvatar src="https://images.unsplash.com/photo-1527203561188-dae1bc1a417f?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDgxfHRvd0paRnNrcEdnfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                    <SuggestedDetails>
-                        <h3> User Name </h3>
-                        <p> Follows You </p>
-                    </SuggestedDetails>
+                                <button> Follow </button>
+                            </SingleSuggestion>
+                        )
+                    })
 
-                    <button> Follow </button>
-                </SingleSuggestion>
-
-                <SingleSuggestion>
-                    <SuggestedAvatar src="https://images.unsplash.com/photo-1601511086638-a6d6946ed7fd?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDQ2fHRvd0paRnNrcEdnfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                    <SuggestedDetails>
-                        <h3> User Name </h3>
-                        <p> Follows You </p>
-                    </SuggestedDetails>
-
-                    <button> Follow </button>
-                </SingleSuggestion>
-
-                <SingleSuggestion>
-                    <SuggestedAvatar src="https://images.unsplash.com/photo-1601511086638-a6d6946ed7fd?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDQ2fHRvd0paRnNrcEdnfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                    <SuggestedDetails>
-                        <h3> User Name </h3>
-                        <p> Follows You </p>
-                    </SuggestedDetails>
-
-                    <button> Follow </button>
-                </SingleSuggestion>
+                }
 
             </UserSuggestions>
 
