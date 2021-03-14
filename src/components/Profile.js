@@ -7,6 +7,7 @@ const url = 'https://randomuser.me/api/?results=4'
 
 const Profile = () => {
     const {currentUser, signOutAction} = useUserAuth()
+
     const [suggestions, setSuggestions] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
@@ -44,7 +45,7 @@ const Profile = () => {
                     suggestions.map((suggestion, i) => {
                         const {name:{first, last}, picture:{large}} = suggestion
                         return (
-                            <SingleSuggestion>
+                            <SingleSuggestion key={i}>
                                 <SuggestedAvatar src={large} />
                                 <SuggestedDetails>
                                     <h3> {first} {last} </h3>

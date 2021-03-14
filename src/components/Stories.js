@@ -1,14 +1,35 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Avatar } from '@material-ui/core'
-import { storiesData } from '.././data/appUiData'
+// import { storiesData } from '.././data/appUiData'
 import { useUserAuth } from '.././contextAPI/userContext'
+
+const url = 'https://randomuser.me/api/?results=6'
 
 const Stories = () => {
     const { currentUser } = useUserAuth()
 
+    const [stories, setStories] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+        setIsLoading(true)
+        try {
+            const getRandomUsers = async () => {
+                const resp = await fetch(url)
+                const users = await resp.json()
+                setStories(users.results)
+            }
+            getRandomUsers()
+            setIsLoading(false)
+        } catch (error) {
+            console.log(error.message);
+        }
+    }, [])
+
     return (
         <StoriesContainer>
+           
             <StoryContainer>
                 <AvatarBg>
                     <StoriesAvatar src={currentUser.photoURL}> {currentUser.displayName[0].toUpperCase()} </StoriesAvatar>
@@ -17,14 +38,16 @@ const Stories = () => {
             </StoryContainer>
 
             {
-                storiesData.map((story, index) => {
-                    const {name, imageSrc} = story;
+               !isLoading &&
+                stories.map((story, i) => {
+                    const {name:{first, last}, picture:{large}} = story
+                    const fullName = first + " " + last
                     return (
-                        <StoryContainer key={index}>
+                        <StoryContainer key={i}>
                             <AvatarBg>
-                                <StoriesAvatar src={imageSrc} />
+                                <StoriesAvatar src={large} />
                             </AvatarBg>
-                            {name.length <= 10 ? <p> {name} </p> : <p> {name.slice(0,10)}... </p>}
+                            {fullName.length <= 10 ? <p> {fullName} </p> : <p> {fullName.slice(0,10)}... </p>}
                         </StoryContainer>
                     )
                 })
