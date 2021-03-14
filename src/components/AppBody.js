@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import Profile from './Profile';
 import PostInput from './PostInput'
 import { BsPlusCircle } from 'react-icons/bs';
-import { appDb } from '.././config/firebaseConfig'
+import { appDb } from '../config/firebaseConfig'
 
 const AppBody = () => {
     const [posts, setPosts] = useState([])
@@ -22,7 +22,7 @@ const AppBody = () => {
 
     return (
         <>
-         <Header />
+        <Header />
         <AppBodyContainer>
             <MainBody>
                 <Stories />

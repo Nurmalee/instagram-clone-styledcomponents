@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Avatar } from '@material-ui/core'
 import { useUserAuth } from '.././contextAPI/userContext'
 
+const url = ''
+
 const Profile = () => {
     const {currentUser, signOutAction} = useUserAuth()
+    const [suggestions, setSuggestions] = useState([])
+
+    useEffect(() => {
+        const getRandomUsers = async () => {
+            const fetchUsers = await fetch(url)
+            const users = await fetchUsers.json()
+            setSuggestions(users)
+        }
+        getRandomUsers()
+    })
 
     return (
         <ProfileContainer>

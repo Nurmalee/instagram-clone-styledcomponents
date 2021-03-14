@@ -37,9 +37,11 @@ const Post = ({name, text, userPicture, uploadedImage, createdAt, postId}) => {
                 <ThreeDotsMoreInfoIcon />
             </PostHeader>
 
+            {uploadedImage &&
             <PostBody>
-                <img src={uploadedImage} alt="imagefile"/>
+                 <img src={uploadedImage} alt="imagefile"/>
             </PostBody>
+            }
 
             <PostIcons>
                 <PostIconsLeft>
@@ -53,8 +55,10 @@ const Post = ({name, text, userPicture, uploadedImage, createdAt, postId}) => {
                 </PostIconsRight>
             </PostIcons>
 
-            {/* {text && <p> {name.toLowerCase()} {showLess ? <span> {text.slice(0, 20)} <button onClick={() => setShowLess(!showLess)}> ... more</button> </span> : <span> {text} </span> } </p>} */}
-            {text && <p> {name.toLowerCase()} <span> {showLess ?  text.slice(0, 100) : text} </span> {showButton && <button onClick={() => setShowLess(!showLess)}> {showLess ? '... more' : '... less'}</button>} </p>}
+            {text && <p> {name.toLowerCase()} 
+            <span> {showLess ?  text.slice(0, 100) : text} </span> 
+            {showButton && <button onClick={() => setShowLess(!showLess)}> {showLess ? '... more' : '... less'}</button>}
+             </p>}
 
             <PostComment postId={postId} />
         </PostContainer>

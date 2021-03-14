@@ -10,6 +10,7 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
 
     const { currentUser } = useUserAuth()
 
+    const [inputError, setInputError] = useState("")
     const [textInput, setTextInput] = useState("")
     const [imageFile, setImageFile] = useState(null)
     const [progress, setProgress] = useState(null)
@@ -17,9 +18,15 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
 
     const handlePostSubmit = (e) => {
         e.preventDefault()
+
+        if(textInput && !imageFile){
+            setInputError("Images make good memories, please upload an image file")
+            return;
+        }
         
         if(textInput || imageFile){
-            const appStorageRef = appStorage.ref(`images/${imageFile.name}`)
+            const appStorageRef = appStorage.ref(`images/${imageFile?.name}`);
+            
             appStorageRef.put(imageFile).on("state_changed", (snap) => {
                 let percentage = (snap.bytesTransferred/snap.totalBytes) * 100
                 setProgress(percentage)
@@ -42,17 +49,7 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
                 }
                 setImageFile(null)
             })
-        } else if (textInput && !imageFile){
-            appDb.collection("posts").add({
-                name: currentUser?.displayName,
-                userPicture: currentUser?.photoURL,
-                text: textInput,
-                createdAt: firebaseServerTime,
-            })
-            setTextInput("")
-            setProgress(null)
-            setShowPostInput(false)
-        }
+        } 
     }
 
     const attachImageFile = (e) => {
@@ -70,8 +67,9 @@ const PostInput = ({showPostInput, setShowPostInput}) => {
         return (
             <Backdrop>
             <PostFormContainer>
+                {inputError && <p> {inputError} </p> }
                 <form onSubmit={handlePostSubmit}>
-                    <textarea rows={9} placeholder={`Hi ${currentUser.displayName} make a post or just upload a picture...`} value={textInput} onChange={(e) => setTextInput(e.target.value)} />
+                    <textarea rows={9} placeholder={`Hi ${currentUser.displayName.toUpperCase()} make a post or just upload a picture...`} value={textInput} onChange={(e) => setTextInput(e.target.value)} />
 
                     <div>
                         <label htmlFor='file'>
@@ -109,6 +107,15 @@ const PostFormContainer = styled.div`
     max-width: 450px;
     /* border: 2px solid; */
     text-align: center;
+
+    > p {
+        cursor: pointer;
+        padding: 10px;
+        margin-bottom: 15px;
+        font-weight: 600;
+        color: red;
+        background-color: rgba(200, 0, 0, 0.5);
+    }
 
     > form {
         display: flex;

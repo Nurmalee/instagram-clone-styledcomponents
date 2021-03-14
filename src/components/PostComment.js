@@ -141,7 +141,7 @@ const SingleComment = styled.div`
 
     >h3 > span {
         font-size: 11px;
-        font-weight: 500;
+        font-weight: 100;
         color: grey;
     }
 `
