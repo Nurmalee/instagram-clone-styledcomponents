@@ -87,10 +87,10 @@ const PostCommentContainer = styled.div`
         font-weight: 500;
         color: #777;
         cursor: pointer;
-    }
-    
-    > p:hover {
-        text-decoration: underline;
+
+        :hover {
+            text-decoration: underline;
+        }
     }
 
     > form {
@@ -101,26 +101,35 @@ const PostCommentContainer = styled.div`
         align-items: center;
         border-top: 1px solid #ccc;
 
-        @media (max-width: 650px) {
-            display: none;
+        > input {
+            width: 100%;
+            flex: 1;
+            padding: 20px 10px;
+            border: none;
+            outline: none;
+            color: #444;
+
+            @media (max-width: 650px) {
+                background-color: inherit;
+            }
         }
-    }
 
-    > form > input {
-        width: 100%;
-        flex: 1;
-        padding: 20px 10px;
-        border: none;
-        outline: none;
-        color: #444;
-    }
+        > button {
+            padding: 10px;
+            border: none;
+            outline: none;
+            background-color: white;
+            color: red;
 
-    > form > button {
-        padding: 10px;
-        border: none;
-        outline: none;
-        background-color: white;
-        color: red;
+            @media (max-width: 650px) {
+                background-color: inherit;
+            }
+        }
+
+        @media (max-width: 650px) {
+            background-color: inherit;
+            border-bottom: 1px solid #ccc;
+        }
     }
 `
 
@@ -133,16 +142,14 @@ const SingleComment = styled.div`
         font-size: 12px;
         font-weight: 700;
         color: #555;
-
-        //alignself helps in proper alignment of commnents when they are too long, padding top helps when they are too short
         align-self: flex-start;
         padding-top: 3px;
-    }
 
-    >h3 > span {
-        font-size: 11px;
-        font-weight: 100;
-        color: grey;
+        > span {
+            font-size: 11px;
+            font-weight: 100;
+            color: grey;
+        }
     }
 `
 
@@ -152,8 +159,8 @@ const CommentInputSmileyIcon = styled(VscSmiley)`
     cursor: pointer;
 `
 const CommentatorAvatar = styled(Avatar)`
-align-self: flex-start;
-height: 25px !important;
-width: 25px !important;
-margin-right: 5px;
+    align-self: flex-start;
+    height: 25px !important;
+    width: 25px !important;
+    margin-right: 5px;
 `
