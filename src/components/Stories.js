@@ -29,7 +29,6 @@ const Stories = () => {
 
     return (
         <StoriesContainer>
-           
             <StoryContainer>
                 <AvatarBg>
                     <StoriesAvatar src={currentUser.photoURL}> {currentUser.displayName[0].toUpperCase()} </StoriesAvatar>
@@ -38,7 +37,7 @@ const Stories = () => {
             </StoryContainer>
 
             {
-               !isLoading &&
+                !isLoading && 
                 stories.map((story, i) => {
                     const {name:{first, last}, picture:{large}} = story
                     const fullName = first + " " + last
@@ -64,7 +63,8 @@ const StoriesContainer = styled.section`
     background-color: white;
     margin: 2px auto 0 auto;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
+    max-width: 100%;
     overflow-x: scroll;
 
     @media (min-width: 650px) {
@@ -94,6 +94,8 @@ const StoryContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+    margin: 0 2px;
 
     > p {
         font-size: 11px;
@@ -107,8 +109,8 @@ const AvatarBg = styled.div`
     align-items: center;
     background: linear-gradient(to right, red, purple);
     border-radius: 50%;
-    min-height: 64px;
-    min-width: 64px;
+    height: 64px;
+    width: 64px;
 `
 
 const StoriesAvatar = styled(Avatar)`

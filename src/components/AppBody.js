@@ -76,6 +76,7 @@ const AppBodyContainer = styled.main`
 
 const MainBody = styled.section`
     flex: 0.65;
+    width: 65%;
 
     @media (max-width: 900px) {
         flex: 1;
@@ -84,6 +85,7 @@ const MainBody = styled.section`
 
 const ProfileContainer = styled.section`
     flex: 0.35;
+    width: 35%;
     /* border: 1px solid #ccc; */
     position: relative;
 
