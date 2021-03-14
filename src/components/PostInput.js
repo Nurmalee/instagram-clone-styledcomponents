@@ -6,11 +6,10 @@ import { appDb, appStorage, firebaseServerTime } from '.././config/firebaseConfi
 import { useUserAuth } from '.././contextAPI/userContext'
 
 
-const PostInput = ({showPostInput, setShowPostInput}) => {
+const PostInput = ({showPostInput, setShowPostInput, inputError, setInputError}) => {
 
     const { currentUser } = useUserAuth()
 
-    const [inputError, setInputError] = useState("")
     const [textInput, setTextInput] = useState("")
     const [imageFile, setImageFile] = useState(null)
     const [progress, setProgress] = useState(null)

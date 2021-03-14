@@ -10,6 +10,8 @@ import { appDb } from '../config/firebaseConfig'
 
 const AppBody = () => {
     const [posts, setPosts] = useState([])
+    const [inputError, setInputError] = useState("")
+    const [showPostInput, setShowPostInput] = useState(false);
 
     useEffect(() => {
         appDb.collection("posts").orderBy("createdAt", "desc").onSnapshot(snap => {
@@ -18,7 +20,11 @@ const AppBody = () => {
 
     }, [])
 
-    const [showPostInput, setShowPostInput] = useState(false);
+    const onPostButtonClick = () => {
+        setShowPostInput(!showPostInput)
+        setInputError("")
+    }
+
 
     return (
         <>
@@ -38,7 +44,7 @@ const AppBody = () => {
 
             </MainBody>
 
-            <AddPostButton onClick={() => setShowPostInput(!showPostInput)}>
+            <AddPostButton onClick={onPostButtonClick}>
                 <p>create a post</p>
                 <PlusIcon />
             </AddPostButton>
@@ -47,7 +53,7 @@ const AppBody = () => {
                 <Profile />
             </ProfileContainer>
 
-            <PostInput showPostInput={showPostInput} setShowPostInput={setShowPostInput} />
+            <PostInput showPostInput={showPostInput} setShowPostInput={setShowPostInput} inputError={inputError} setInputError={setInputError} />
                
         </AppBodyContainer>
         </>
