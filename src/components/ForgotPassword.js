@@ -10,12 +10,16 @@ const ForgotPassword = () => {
     const [email, setEmail] = useState('')
     const [loading, setLoading] = useState(false)
     const [errorText, setErrorText] = useState("")
-    const [success, setSuccess] = useState("")
+    const [success, setSuccess] = useState({
+        color: 'green',
+        backgroundColor: 'lightgreen'
+    })
 
     const handleResetPassword = async (e) => {
         e.preventDefault()
 
         if(!email){
+            setSuccess({})
             setErrorText('You have to specify your registered email address')
             return;
         }
@@ -24,7 +28,7 @@ const ForgotPassword = () => {
             setErrorText("")
             setLoading(true)
             await resetPasswordAction(email)
-            setSuccess("green")
+            setSuccess({...success})
             setErrorText('Please check your inbox for further directions')
         } catch (error) {
             setErrorText(error.message)
@@ -38,7 +42,7 @@ const ForgotPassword = () => {
                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/%C4%B0nstagram-Profilime-Kim-Bakt%C4%B1-1.png" alt="instagram"/>
             </LoginHeader>
 
-            {errorText && <p style={{color: `${success}`, backgroundColor: "#ccc"}}>{errorText}</p>}
+            {errorText && <p style={{color: `${success.color}`, backgroundColor: `${success.backgroundColor}`}}>{errorText}</p>}
 
             <LoginForm  onSubmit={handleResetPassword}>
                 <input type="email" placeholder="Email Address" value={email} onChange={e => setEmail(e.target.value)}/>
