@@ -9,19 +9,28 @@ const Signup = () => {
     const { signUpAction } = useUserAuth()
     const history =  useHistory()
 
-    const [email, setEmail] = useState('')
-    const [userName, setUserName] = useState('')
-    const [pictureUrl, setPictureUrl] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
+    // const [email, setEmail] = useState('')
+    // const [userName, setUserName] = useState('')
+    // const [pictureUrl, setPictureUrl] = useState('')
+    // const [password, setPassword] = useState('')
+    // const [confirmPassword, setConfirmPassword] = useState('')
+
+    const [user, setUser] = useState({
+        email: '',
+        userName: '',
+        pictureUrl: '',
+        password: '',
+        confirmPassword: ''
+    })
+
     const [errorText, setErrorText] = useState("")
     const [loading, setLoading] = useState(false)
     
 
-    const handleSignUp = async (e) => {
+    const handleUserSignUp = async (e) => {
         e.preventDefault()
 
-        if(!email || !password || !userName){
+        if(!user.email || !user.password || !user.userName){
             setErrorText("You atleast have to provide an Email Address, a Username and a Password.")
             return;
         }
@@ -34,7 +43,7 @@ const Signup = () => {
         try {
             setErrorText("")
             setLoading(true)
-            await signUpAction(email, password, userName, pictureUrl)
+            await signUpAction(user.email, user.password, user.userName, user.pictureUrl)
             history.push("/login")
         } catch (error) {
             setErrorText(error.message)
@@ -51,17 +60,17 @@ const Signup = () => {
 
             {errorText && <p>{errorText}</p>}
 
-            <LoginForm onSubmit={handleSignUp}>
-                <input type="email" placeholder="Email Address" value={email} onChange={e => setEmail(e.target.value)} />
-                <input type="text" placeholder="User Display Name" value={userName} onChange={e => setUserName(e.target.value)} />
-                <input type="text" placeholder="Picture Url" value={pictureUrl} onChange={e => setPictureUrl(e.target.value)} />
-                <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-                <input type="password" placeholder="Confirm Password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
+            <LoginForm onSubmit={handleUserSignUp}>
+                <input type="email" placeholder="Email Address" value={user.email} onChange={e => setUser({...user, email: e.target.value})} />
+                <input type="text" placeholder="User Display Name" value={user.userName} onChange={e => setUser({...user, userName: e.target.value})} />
+                <input type="text" placeholder="Picture Url" value={user.pictureUrl} onChange={e => setUser({...user, pictureUrl: e.target.value})} />
+                <input type="password" placeholder="Password" value={user.password} onChange={e => setUser({...user, password: e.target.value})} />
+                <input type="password" placeholder="Confirm Password" value={user.confirmPassword} onChange={e => setUser({...user, confirmPassword: e.target.value})} />
                 <button type="submit" disabled={loading}> Sign Up </button>
             </LoginForm>
 
             <LoginBottom>
-                <p>Already signed up? <Link to='/login' > Click here to sign in</Link>  </p>
+                <p>Already have an account? <Link to='/login' > Click here to sign in</Link>  </p>
                 <p>Copyright 2021 LeeEffect</p>
             </LoginBottom>
         </LoginContainer>
