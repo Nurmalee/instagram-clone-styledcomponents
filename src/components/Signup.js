@@ -35,7 +35,7 @@ const Signup = () => {
             return;
         }
 
-        if(password !== confirmPassword){
+        if(user.password !== user.confirmPassword){
             setErrorText("Passwords must be exact")
             return;
         }
