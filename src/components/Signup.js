@@ -9,12 +9,6 @@ const Signup = () => {
     const { signUpAction } = useUserAuth()
     const history =  useHistory()
 
-    // const [email, setEmail] = useState('')
-    // const [userName, setUserName] = useState('')
-    // const [pictureUrl, setPictureUrl] = useState('')
-    // const [password, setPassword] = useState('')
-    // const [confirmPassword, setConfirmPassword] = useState('')
-
     const [user, setUser] = useState({
         email: '',
         userName: '',
@@ -25,7 +19,6 @@ const Signup = () => {
 
     const [errorText, setErrorText] = useState("")
     const [loading, setLoading] = useState(false)
-    
 
     const handleUserSignUp = async (e) => {
         e.preventDefault()
