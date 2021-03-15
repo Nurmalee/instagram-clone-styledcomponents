@@ -49,7 +49,7 @@ const Login = () => {
             <LoginBottom>
                 <p> Forgot your password? <Link to="/resetpassword"> Get help signing in </Link>  </p>
                 <p> Need a new account? <Link to="/signup"> Click here to sign up</Link>  </p>
-                <p>Copyright 2021 LeeEffect</p>
+                <p> <i> Copyright &copy; 2021 <strong> TheLeeEffect </strong></i>  </p>
             </LoginBottom>     
         </LoginContainer>
     )
@@ -134,5 +134,10 @@ const LoginBottom = styled.div`
         cursor: pointer;
         text-decoration: underline;
         color: red;
+    }
+
+    > p:nth-of-type(3) {
+        font-size: 12px;
+        margin-top: 5px;
     }
 `

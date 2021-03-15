@@ -64,7 +64,7 @@ const Signup = () => {
 
             <LoginBottom>
                 <p>Already have an account? <Link to='/login' > Click here to sign in</Link>  </p>
-                <p>Copyright 2021 LeeEffect</p>
+                <p> <i> Copyright &copy; 2021 <strong> TheLeeEffect </strong></i>  </p>
             </LoginBottom>
         </LoginContainer>
     )
@@ -153,5 +153,10 @@ const LoginBottom = styled.div`
         cursor: pointer;
         text-decoration: underline;
         color: red;
+    }
+
+    > p:nth-of-type(2) {
+        font-size: 12px;
+        margin-top: 5px;
     }
 `
