@@ -74,14 +74,18 @@ export const LoginBottom = styled.div`
     margin-top: 20px;
     padding: 10px 0;
     
-    > p > span {
-        cursor: pointer;
-        text-decoration: underline;
-        color: red;
-    }
+    > p {
 
-    > p:nth-of-type(3) {
-        font-size: 12px;
-        margin-top: 5px;
+        > span {
+            cursor: pointer;
+            text-decoration: underline;
+            color: red;
+        }
+
+        :last-of-type {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    
     }
 `
