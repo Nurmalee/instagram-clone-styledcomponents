@@ -45,7 +45,7 @@ const AppBody = () => {
             </MainBody>
 
             <AddPostButton onClick={onPostButtonClick}>
-                <p>create a post</p>
+                { !showPostInput && <p>create a post</p> }
                 <PlusIcon />
             </AddPostButton>
 

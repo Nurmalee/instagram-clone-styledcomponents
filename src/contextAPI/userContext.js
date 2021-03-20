@@ -15,10 +15,10 @@ const UserAuthContextProvider = ({children}) => {
     const signUpAction = (email, password, userName, pictureUrl) => {
         if(email && userName && password){
             appAuth.createUserWithEmailAndPassword(email, password)
-            .then((userInCreation) => {
+            .then( async (userInCreation) => {
                 userInCreation.user.updateProfile({
                     displayName: userName,
-                    photoURL: pictureUrl,
+                    photoURL: await pictureUrl,
                 })
             })
             .catch(error => alert(error))

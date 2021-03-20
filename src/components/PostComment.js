@@ -61,8 +61,8 @@ const PostComment = ({postId}) => {
                     const {commentator, commentatorPic, text} = comment.data
                     return (
                         <SingleComment key={comment.id}>
-                            <CommentatorAvatar src={commentatorPic} />
-                            <h3> {commentator} <span> {text} </span> </h3>
+                            <CommentatorAvatar src={commentatorPic}> {commentator[0].toUpperCase()} </CommentatorAvatar>
+                            <h3> {commentator.toLowerCase()} <span> {text} </span> </h3>
                         </SingleComment>
                     )
                 })

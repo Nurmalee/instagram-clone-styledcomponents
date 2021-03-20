@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useUserAuth } from '.././contextAPI/userContext'
 
+// import FileBase64 from 'react-file-base64'
+
 import { LoginContainer, LoginHeader, LoginForm, LoginBottom } from './formStyles'
 
 const Signup = () => {
@@ -20,6 +22,8 @@ const Signup = () => {
 
     const [errorText, setErrorText] = useState("")
     const [loading, setLoading] = useState(false)
+
+    // const pictureFormat = []
 
     const handleUserSignUp = async (e) => {
         e.preventDefault()
@@ -58,6 +62,7 @@ const Signup = () => {
                 <input type="email" placeholder="Email Address" value={user.email} onChange={e => setUser({...user, email: e.target.value})} />
                 <input type="text" placeholder="User Display Name" value={user.userName} onChange={e => setUser({...user, userName: e.target.value})} />
                 <input type="text" placeholder="Picture Url" value={user.pictureUrl} onChange={e => setUser({...user, pictureUrl: e.target.value})} />
+                {/* <FileBase64 type="file" multiple={false} onDone={({base64}) => setUser({...user, pictureUrl: base64})} /> */}
                 <input type="password" placeholder="Password" value={user.password} onChange={e => setUser({...user, password: e.target.value})} />
                 <input type="password" placeholder="Confirm Password" value={user.confirmPassword} onChange={e => setUser({...user, confirmPassword: e.target.value})} />
                 <button type="submit" disabled={loading}> Sign Up </button>
