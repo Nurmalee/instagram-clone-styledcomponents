@@ -5,14 +5,13 @@ import { RiSendPlaneLine } from 'react-icons/ri';
 import { appDb, appStorage, firebaseServerTime } from '.././config/firebaseConfig'
 import { useUserAuth } from '.././contextAPI/userContext'
 
-
 const PostInput = ({showPostInput, setShowPostInput, inputError, setInputError}) => {
 
-    const { currentUser } = useUserAuth()
+    const { currentUser, setProgress } = useUserAuth()
 
     const [textInput, setTextInput] = useState("")
     const [imageFile, setImageFile] = useState(null)
-    const [progress, setProgress] = useState(null)
+    const [loading, setLoading] = useState(false)
     const imageType = ["image/png", "image/jpg", "image/jpeg", "image/JPG", "image/JPEG", "image/PNG"]
 
     const handlePostSubmit = (e) => {
@@ -24,11 +23,13 @@ const PostInput = ({showPostInput, setShowPostInput, inputError, setInputError})
         }
         
         if(textInput || imageFile){
+            setLoading(true)
             const appStorageRef = appStorage.ref(`images/${imageFile?.name}`);
             
             appStorageRef.put(imageFile).on("state_changed", (snap) => {
                 let percentage = (snap.bytesTransferred/snap.totalBytes) * 100
                 setProgress(percentage)
+                setShowPostInput(false)
             }, (error) => {
                 alert(error)
             }, async () => {
@@ -43,12 +44,13 @@ const PostInput = ({showPostInput, setShowPostInput, inputError, setInputError})
                 })
                 setTextInput("")
                 setProgress(null)
-                if(imageUrl){
-                    setShowPostInput(false)
-                }
+               
                 setImageFile(null)
+                setLoading(false)
             })
+
         } 
+
     }
 
     const attachImageFile = (e) => {
@@ -75,9 +77,8 @@ const PostInput = ({showPostInput, setShowPostInput, inputError, setInputError})
                             <p>upload image</p>
                             <input type='file' id='file' onChange={attachImageFile} />
                         </label>
-                        <button type="submit" > <RiSendPlaneLine  style={{height: "20px", width: "20px", marginRight: "10px"}} /> send post </button>
+                        <button type="submit" disabled={loading}> <RiSendPlaneLine  style={{height: "20px", width: "20px", marginRight: "10px"}} /> send post </button>
                     </div>
-                    {progress && <ImageUploadProgressBar style={{width: `${progress}%`}}></ImageUploadProgressBar>}
                     {imageFile && <p>{imageFile.name}</p>}
                 </form>
             </PostFormContainer>
@@ -120,71 +121,73 @@ const PostFormContainer = styled.div`
         display: flex;
         flex-direction: column;
         width: 100%;
-    }
 
-    > form > textarea {
-        padding: 20px;
-        outline: none;
-        border: none;
-        font-size: 14px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    > form > div {
-        display: flex;
-    }
-
-    > form > div > button, form > div > label {
-        flex: 1;
-        padding: 10px 0;
-        text-transform: capitalize;
-        background-color: #333;
-        color: white;
-        border-top: 1px solid;
-        border-left: none;
-        border-right: none;
-        border-bottom: none;
-        outline: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 900;
-        transition: 1000ms;
-        /* border-radius: 5px; */
-    }
-
-    >  form > div > label {
-        padding: 0;
-        background-color: white;
-        color: black;
-        border-top: 1px solid;
-        border-left: none;
-        border-right: 1px solid;
-        cursor: pointer;
         > p {
-            font-size: 14px;
+            background-color: lightgreen;
+            color: green;
+            padding: 3px;
+            margin-top: 3px;
+            border-radius: 5px;
         }
-    }
 
-    > form > div > button:hover,
-    form > div > label:hover {
-        background-color: black;
-        color: white;
-        border: 1px solid;
-    }
+        > textarea {
+            padding: 20px;
+            outline: none;
+            border: none;
+            font-size: 14px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    > form > div > label > input {
-        width: 0.1px;
-	    height: 0.1px;
-	    opacity: 0;
-	    overflow: hidden;
-	    position: absolute;
-	    z-index: -1;
-    }
-`
+        > div {
+            display: flex;
+        }
 
-const ImageUploadProgressBar = styled.div`
-height: 3px;
-border-radius: 50px;
-background-color: red;
+        > div > button, > div > label {
+            flex: 1;
+            padding: 10px 0;
+            text-transform: capitalize;
+            background-color: #333;
+            color: white;
+            border-top: 1px solid;
+            border-left: none;
+            border-right: none;
+            border-bottom: none;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            transition: 1000ms;
+        /* border-radius: 5px; */
+        }
+
+        > div > label {
+            padding: 0;
+            background-color: white;
+            color: black;
+            border-top: 1px solid;
+            border-left: none;
+            border-right: 1px solid;
+            cursor: pointer;
+            > p {
+                font-size: 14px;
+            }
+        }
+
+        > div > button:hover,
+        > div > label:hover {
+            background-color: black;
+            color: white;
+            border: 1px solid;
+        }
+
+        > div > label > input {
+            width: 0.1px;
+	        height: 0.1px;
+	        opacity: 0;
+	        overflow: hidden;
+	        position: absolute;
+	        z-index: -1;
+        }
+    } 
 `

@@ -12,6 +12,8 @@ const UserAuthContextProvider = ({children}) => {
     const [currentUser, setCurrentUser] = useState('')
     const [loading, setLoading] = useState(true)
 
+    const [progress, setProgress] = useState(null)
+
     const signUpAction = (email, password, userName, pictureUrl) => {
         if(email && userName && password){
             appAuth.createUserWithEmailAndPassword(email, password)
@@ -47,7 +49,7 @@ const UserAuthContextProvider = ({children}) => {
 
 
     return (
-        <userAuthContext.Provider value={{currentUser, signUpAction, logInAction, resetPasswordAction, signOutAction}}>
+        <userAuthContext.Provider value={{currentUser, signUpAction, logInAction, resetPasswordAction, signOutAction, progress, setProgress}}>
             {!loading && children}
         </userAuthContext.Provider>
     )

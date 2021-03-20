@@ -8,10 +8,14 @@ import PostInput from './PostInput'
 import { BsPlusCircle } from 'react-icons/bs';
 import { appDb } from '../config/firebaseConfig'
 
+import { useUserAuth } from '.././contextAPI/userContext'
+
 const AppBody = () => {
     const [posts, setPosts] = useState([])
     const [inputError, setInputError] = useState("")
     const [showPostInput, setShowPostInput] = useState(false);
+
+    const { progress } = useUserAuth()
 
     useEffect(() => {
         appDb.collection("posts").orderBy("createdAt", "desc").onSnapshot(snap => {
@@ -32,6 +36,14 @@ const AppBody = () => {
         <AppBodyContainer>
             <MainBody>
                 <Stories />
+
+
+                {progress > 0 && 
+                    <ImageUploadProgressBar>
+                        <p>FINISHING UP YOUR UPLOAD... PLEASE HOLD ON A SECOND</p>
+                        <div style={{width: `${progress}%`}}></div>
+                    </ImageUploadProgressBar>
+                }
 
                 {
                     posts.map(post => {
@@ -141,4 +153,22 @@ const PlusIcon = styled(BsPlusCircle)`
     :hover {
         transform: rotate(1080deg)
     }
+`
+
+const ImageUploadProgressBar = styled.div`
+    margin-top: 20px;
+
+    > p {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-weight: 100;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    > div {
+        height: 2px;
+        border-radius: 50px;
+        background-color: red;
+    }
+   
 `
