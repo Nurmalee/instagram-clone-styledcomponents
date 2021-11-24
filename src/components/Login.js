@@ -17,6 +17,7 @@ const Login = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault()
+        setLoading(true)
 
         if(!email || !password){
             setErrorText("Did you sign up already? You have to provide an Email Address and a Password.")
@@ -25,7 +26,6 @@ const Login = () => {
 
         try {
             setErrorText("")
-            setLoading(true)
             await logInAction(email, password)
             history.push("/")
         } catch (error) {

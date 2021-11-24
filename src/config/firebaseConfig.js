@@ -17,3 +17,4 @@ const appAuth = firebase.auth();
 const firebaseServerTime = firebase.firestore.FieldValue.serverTimestamp();
 
 export { appDb, appStorage, appAuth, firebaseServerTime }
+export default firebase
